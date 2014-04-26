@@ -1,0 +1,60 @@
+<meta charset="UTF-8">
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="GameLoop.js"></script>
+	<script type="text/javascript" src="Mouse.js"></script>
+	<script type="text/javascript" src="TextWindow.js"></script>
+	<script type="text/javascript" src="Level.js"></script>	
+	<script type="text/javascript" src="Keyboard.js"></script>
+	<script type="text/javascript" src="Conversations.js"></script>
+	<title>Ludum Dare 29</title>
+	<style>
+		*{
+			background: black;
+			color: red;
+		}
+		body{
+			text-align: center;
+		}
+		.wrapper{
+			height: 100%;
+		}
+		.wrapper:before { 
+			/* this is the important part */ 
+			content: ''; 
+			display: inline-block; 
+			width: 0; 
+			height: 100%; 
+			vertical-align: middle; 
+			align: middle;
+			/* this just takes care of whitespace added by having display:inline-block (there are other methods) */ 
+			margin-left: -0.25em; 
+		} 
+		#canvas{
+			display: inline-block; 
+			vertical-align: middle;
+			left:50%; 
+			height: 600; 
+			width: 800;
+			margin-top:-5em;
+			background: white;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper"> 
+		<canvas id="canvas" height="600" width="800">
+			Your browser is too old to play this game. (Or has too many security settings active.)
+		</canvas>
+	</div>
+	<script type="text/javascript">
+		//window.addEventListener("keydown", Keyboard.keydown);
+		var canvas = document.getElementById("canvas")
+		var game = new GameLoop(canvas);
+		game.gui = new GUI("test");
+		game.level = new Level();
+		game.start();
+	</script>
+</body>
+</html>
