@@ -9,6 +9,8 @@ function intersectRect(r1, r2) {
 function Level(name) {
 	var level = this;
 	var levelData = Levels[name];
+	console.log("Building level. ("+name+") level data:");
+	console.log(levelData);
 	this.objects = [];
 	for (var i = 0; i < levelData.objects.length; i++) {
 		level.objects.push(new LevelObject(levelData.objects[i]));
@@ -18,8 +20,14 @@ function Level(name) {
 	Hero.moveTo(levelData.spawn);
 	Hero.level = level;
 	this.setBGImage = function(file){
-		level.background = new Image();
-		level.background.src = file;
+		var img = new Image();
+		img.src = file;
+		img.onload = function () {
+		  level.background = img;
+		}
+	}
+	if(levelData.src){
+		level.setBGImage(levelData.src);
 	}
 
 	this.update = function(delta) {
@@ -65,7 +73,13 @@ var Hero = {
 			for (var i = 0; i < this.level.objects.length; i++) {
 				var obj = this.level.objects[i];
 				if(obj.conversation && obj.intersects(this.location))
-					this.intersects.push(this.level.objects[i]);
+					if(obj.mandatory){
+						console.log("interract with something ");
+						console.log(obj.conversation);
+						game.gui = new GUI(obj.conversation);
+					}else{
+						this.intersects.push(this.level.objects[i]);	
+					}
 			};
 		}
 	},
@@ -92,11 +106,13 @@ var Hero = {
 		game.gui = new GUI(this.intersects[0].conversation);
 	}
 }
+
 function LevelObject(data) {
 	var object = this;
 	object.sprite = new Sprite(data.sprite);
 	object.bounds = data.bounds;
-	object.conversation = data.conversation;	
+	object.conversation = data.conversation;
+	object.mandatory = data.mandatory;
 
 	this.update = function(delta) {
 		// change animation frame
@@ -128,6 +144,7 @@ var Levels = {
 	"surface" : {
 		spawn : {x:700, y:500},
 		exit : {x:100, y:500, leadsTo:"well"},
+		src : "meadow.png",
 		objects : [
 			{
 				sprite : "tree",
@@ -137,6 +154,24 @@ var Levels = {
 			{
 				sprite : "bush",
 				bounds : {x:750, y:500, width:50, height:100},
+				conversation : undefined
+			},
+			{
+				sprite : "hole",
+				bounds : {x:300, y:560, width:150, height:20},
+				conversation : "Intro",
+				mandatory : "hole"
+			}
+		]
+	},
+	"hole" : {
+		spawn : {x:400, y:500},
+		exit : {x:100, y:500, leadsTo:"well"},
+		src : "bottom.png",
+		objects : [
+			{
+				sprite : "light",
+				bounds : {x:300, y:0, width:100, height:300},
 				conversation : undefined
 			}
 		]

@@ -61,8 +61,15 @@ function OptionsWindow(options, gui) {
 			ow.selected = 0;
 	}
 	this.enter = function(){
-		gui.selectOption(ow.options[ow.selected]["leadsTo"]);
 		ow.selected = 0;
+		var dest = ow.options[ow.selected]["leadsTo"];
+		if(ow.options[ow.selected].levelTransition){
+			console.log("Loading level: " + dest)
+			game.loadLevel(dest)
+			game.gui = null;
+			return;
+		}
+		gui.selectOption(dest);
 	}
 
 	//rendering

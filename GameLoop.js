@@ -38,6 +38,12 @@ function GameLoop(canvas) {
 		window.requestAnimationFrame(this.run);
 	}
 
+	this.loadLevel = function(levelname) {
+		game.stop();
+		game.level = new Level(levelname);
+		game.start();
+	}
+
 	//stop rendering and updating.
 	this.stop = function() {
 		game.running = false;

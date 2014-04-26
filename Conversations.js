@@ -178,8 +178,9 @@ var Conversations = {
 				"text" : "Pull the lever"
 			},
 			"goforth01" : {
-				"leadsTo" : "island01",
-				"text" : "Gather yourself and venture forth across the bridge"
+				"leadsTo" : "hole",
+				"text" : "Gather yourself and venture forth across the bridge",
+				levelTransition : true
 			}
 		}
 	}
