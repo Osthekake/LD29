@@ -54,7 +54,7 @@ var Conversations = {
 					"coverhole01"]
 			},
 			"intro02" : {
-				"text" : "You find an old door, which looks like it was covering the hole until\nrecently. It's pretty heavy. It has a rope attached to the middle of one\nside. This does not make it any easier to drag.\nYou take a break from dragging it and sit beside the hole. The smell of\ncool water comes up from it: it's an old well, not just a\nmysterious hole. That makes a lot more sense.\nStill dangerous though.\nYou stand up to drag the door again when you see something\nshining in the water. It's quite far down.",
+				"text" : "You find an old door, which looks like it was covering the hole until\nrecently. It's pretty heavy. It has a rope attached to the middle of one\nside. This does not make it any easier to drag.\nYou take a break from dragging it and sit beside the hole. The smell of\ncool water comes up from it: it's an old well, not just a mysterious\nhole. That makes a lot more sense.\nStill dangerous though.\nYou stand up to drag the door again when you see something\nshining in the water. It's quite far down.",
 				"options" : [
 					"shiny01"]
 			},
@@ -74,7 +74,7 @@ var Conversations = {
 					"badidea01"]
 			},
 			"intro06" : {
-				"text" : "Letting go of the rope is your third bad idea. You drop into the\nwater with a massive splash and soak yourself pretty effectively.\nAt least there's not much water in here. Plus, the shiny\nthing is just in reach.",
+				"text" : "Letting go of the rope is your third bad idea. You drop into the\nwater with a massive splash and soak yourself pretty effectively.\nAt least there's not much water in here. Plus, the shiny thing is\njust in reach.",
 				"options" : [
 					"shiny04"]
 			},
@@ -84,7 +84,7 @@ var Conversations = {
 					"shiny05"]
 			},
 			"intro08" : {
-				"text" : "It's a lever.\nThe floor drops out from under you. You briefly manage to cling\nto the lever, saying \"argh\", but you're already tired from\ndragging that damn door and you fall down, into another pool\nof water, but that falls as well.",
+				"text" : "It's a lever.\nThe floor drops out from under you. You briefly manage to cling\nto the lever, saying \"argh\", but you're already tired from dragging\nthat damn door and you fall down, into another pool of water,\nbut that falls as well.",
 				"options" : [
 					"scream01"]
 			},
