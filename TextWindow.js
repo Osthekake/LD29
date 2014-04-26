@@ -62,6 +62,7 @@ function OptionsWindow(options, gui) {
 	}
 	this.enter = function(){
 		gui.selectOption(ow.options[ow.selected]["leadsTo"]);
+		ow.selected = 0;
 	}
 
 	//rendering
@@ -117,6 +118,7 @@ function GUI(conversationID) {
 		if(!gui.currentScreen){
 			//leave conversation
 			console.log("Leaving conversation")
+			game.gui = null;
 			return;
 		}
 		gui.options.setOptions(gui.buildOptions());

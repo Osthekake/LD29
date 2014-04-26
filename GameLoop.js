@@ -45,10 +45,12 @@ function GameLoop(canvas) {
 
 	//the update method
 	this.update = function(time) {
-		if(game.level)
-			game.level.update(time);
 		if(game.gui)
 			game.gui.update(time);
+		else 
+			Hero.update(time);
+		if(game.level)
+			game.level.update(time);
 	}
 
 	//the draw method.
@@ -68,9 +70,12 @@ function GameLoop(canvas) {
 		}
 	}
 
+	var lastUpdate = 0;
 	//hook for update and draw.
 	this.run = function(time) {
-		game.update(time);
+		var delta = time - lastUpdate;
+		lastUpdate = time;
+		game.update(delta);
 		game.draw();
 		if(game.running){
 			window.requestAnimationFrame(game.run);
