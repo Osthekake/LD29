@@ -24,11 +24,11 @@ function TextWindow(text) {
 		context.lineTo(775, 25);
 		context.lineTo(25, 25);
 		context.stroke();
-		context.fillStyle = "rgba(100, 100, 100, 0.5)";
+		context.fillStyle = Settings.textFieldColor;
 		context.fillRect(25,25,750,350); 
 
-		context.fillStyle = "blue";
-		context.font = "bold 22px sans-serif";
+		context.fillStyle = Settings.textColor;
+		context.font = Settings.font;
 		context.textBaseline = "top";
 		for (var i = tw.lines.length - 1; i >= 0; i--) {
 			context.fillText(tw.lines[i], 50, 50 + lineheight * i);	
@@ -72,14 +72,14 @@ function OptionsWindow(options, gui) {
 		context.lineTo(775, 425);
 		context.lineTo(25, 425);
 		context.stroke();
-		context.fillStyle = "rgba(100, 100, 100, 0.5)";
+		context.fillStyle = Settings.textFieldColor;
 		context.fillRect(25,425,750,150); 
 
-		context.fillStyle = "rgba(100, 0, 0, 0.5)";
+		context.fillStyle = Settings.selectedColor;
 		context.fillRect(30, 445 + ow.selected * lineheight, 740, lineheight);
 
-		context.fillStyle = "blue";
-		context.font = "bold 22px sans-serif";
+		context.fillStyle = Settings.textColor;
+		context.font = Settings.font;
 		context.textBaseline = "top"
 		
 		for (var i = 0; i < ow.options.length; i++) {
