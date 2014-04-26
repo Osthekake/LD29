@@ -1,0 +1,80 @@
+<meta charset="UTF-8">
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="GameLoop.js"></script>
+	<script type="text/javascript" src="Mouse.js"></script>
+	<script type="text/javascript" src="TextWindow.js"></script>
+	<script type="text/javascript" src="Level.js"></script>	
+	<script type="text/javascript" src="Keyboard.js"></script>
+	<script type="text/javascript" src="Conversations.js"></script>
+	<title>Ludum Dare 29</title>
+	<style>
+		*{
+			background: black;
+			color: red;
+		}
+		body{
+			text-align: center;
+		}
+		.wrapper{
+			height: 100%;
+		}
+		.wrapper:before { 
+			/* this is the important part */ 
+			content: ''; 
+			display: inline-block; 
+			width: 0; 
+			height: 100%; 
+			vertical-align: middle; 
+			align: middle;
+			/* this just takes care of whitespace added by having display:inline-block (there are other methods) */ 
+			margin-left: -0.25em; 
+		} 
+		#canvas{
+			display: inline-block; 
+			vertical-align: middle;
+			left:50%; 
+			height: 600; 
+			width: 800;
+			margin-top:-5em;
+			background: white;
+		}
+	</style>
+	<script type="text/javascript">
+		//window.addEventListener("keydown", Keyboard.keydown);
+		
+		var selectClick = function(){
+			console.log("Selected convo. Starting test.")
+			wrapper.innerHTML = "<canvas id='canvas' height='600' width='800'>"+
+				"Your browser is too old to play this game. (Or has too many security settings active.)" +
+				"</canvas>"
+			var canvas = document.getElementById("canvas")
+			var game = new GameLoop(canvas);
+			game.gui = new GUI(select.options[select.selectedIndex].value);
+			game.level = new Level();
+			game.start();
+		};
+		
+	</script>
+</head>
+<body>
+	
+
+	<div class="wrapper" id="wrapper"> 
+		<select id="select">
+
+		</select>
+		<button onclick="selectClick();">Go</button>
+	</div>
+
+	<script>
+		var select = document.getElementById("select");
+		for (var i = 0; i < Object.keys(Conversations).length; i++) {
+			var conv = Object.keys(Conversations)[i];
+			select.innerHTML += "<option id='"+conv+"'>"+conv+"</option>";
+		};
+		var wrapper = document.getElementById("wrapper");
+	</script>
+</body>
+</html>

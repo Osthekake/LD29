@@ -2,8 +2,12 @@ function Level() {
 	var level = this;
 	this.objects = []
 
-	this.background = new Image();
-	this.background.src = "ug.jpg";
+	this.background = undefined;
+
+	this.setBGImage = function(file){
+		level.background = new Image();
+		level.background.src = file;
+	}
 
 	this.update = function(delta) {
 		for (var i = level.objects.length - 1; i >= 0; i--) {
