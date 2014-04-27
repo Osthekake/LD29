@@ -183,7 +183,7 @@ var Conversations = {
 				levelTransition : true
 			}
 		}
-	}
+	},
 	"newspaper" : {
 		"start" : "newspaper01",
 		"screens" : {
@@ -235,12 +235,82 @@ var Conversations = {
 				"text" : "Read the Travel Advisory notice"
 			},
 			"exit01" : {
-				"leadsTo" : "somethingsomethingsomthing?",
+				"leadsTo" : undefined,
 				"text" : "Put the paper down"
 			},
 			"more01" : {
 				"leadsTo" : "newspaper02",
 				"text" : "Read more"
 			}
+	},
+	"notebook" : {
+		"start" : "notebook01",
+		"screens" : {
+			"notebook01" : {
+				"text" : "You see a notebook under a patch of small red mushrooms. You\npick it up, because you're nosy like that. Looks like it was\nsoaked in water for a while, but it's dried out and might still\nhave some useful information. You start flicking through it.",
+				"options" : [
+					"notecont01"]
+			},
+			"notebook02" : {
+				"text" : "The first few pages are references to various different\ninterviews with Knight Fight fans and with the knights\nthemselves.",
+				"options" : [
+					"notemore01",
+					"noteskip01"]
+			},
+			"notebook03" : {
+				"text" : "There's not much that you understand here, but you notice that\nboth Sir Face and Sir Passable seem to respect each other a lot.\nSir Face mentions that Sir Passable has the best armour she's\never seen, and Sir Passable says that Sir Face's stance is\n rock solid and hard to breach.",
+				"options" : [
+					"noteskip01"]
+			},
+			"notebook04" : {
+				"text" : "What you can make out here suggests that the writer was\ninvestigating the locations of the Knight Fights and the damage\ndone. There are a lot of question marks and underlines.",
+				"options" : [
+					"notemore02",
+					"noteskip02"]
+			},
+			"notebook05" :{
+				"text" : "Maybe if you could dry the book out and add fingerprint dust to\nit, that stuff sticks to everything. Not that you have personal\nexperience of it or anything.",
+				"options" : [
+					"noteskip02"]
+			},
+			"notebook06" : {
+				"text" : "The notebook finishes abruptly with what looks like a map\nlocation and a spatter of dark brown liquid.",
+				"options" : [
+					"notecont02"]
+			},
+			"notebook07" : {
+				"text" : "You pocket the notebook, trying hard not to touch the blood."
+				"options" : [
+					"noteend01"]
+			}
+		},
+		"options" : {
+			"notecont01" : {
+				"leadsTo" : "notebook02",
+				"text" : "Keep reading"
+			},
+			"notecont02" : {
+				"leadsTo" : "notebook07",
+				"text" : "Is that blood? Oh my"
+			},
+			"notemore01" : {
+				"leadsTo" : "notebook03",
+				"text" : "Read more about the knights"
+			},
+			"notemore02" : {
+				"leadsTo" : "notebook05",
+				"text" : "Try to make out more"
+			},
+			"noteskip01" : {
+				"leadsTo" : "notebook04",
+				"text" : "Skip to the next section"
+			},
+			"noteskip02" : {
+				"leadsTo" : "notebook06",
+				"text" : "Skip to the next section"
+			},
+			"noteend01" : {
+				"leadsTo" : undefined,
+				"text" : "Go back to looking around"
 	}
 };
