@@ -195,6 +195,11 @@ var Levels = {
 				bounds : {x:750, y:290, width:50, height:50},
 				transition : "ship",
 				hint : "Go right"
+			},{
+				sprite : "paper",
+				bounds : {x:550, y:310, width:50, height:50},
+				conversation : "newspaper",
+				hint : "read newspaper"
 			}
 		]
 	},
