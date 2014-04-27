@@ -15,6 +15,7 @@ var Conversations = {
 				"options" : [//these are the _IDS_ of the options which are appropriate for this screen.
 					"insult01",
 					"greet01",
+					"polite",
 					"leave" 
 					// For graphical reasons, 4 is probably the highest number of options you should have.
 				]
@@ -37,7 +38,13 @@ var Conversations = {
 			},
 			"greet01" : {	
 				"leadsTo" : "screen01",
-				"text" : "I greet you fellow subterranian."
+				"text" : "I greet you fellow subterranian.",
+				yields : "politeness"
+			},
+			"polite" : {
+				"leadsTo" : "screen01",
+				"text" : "I am so polite!.",
+				requires : ["politeness"]
 			},
 			"leave" : {
 				"leadsTo" : undefined, //leadsTo as undefined will cause the conversation to end

@@ -9,7 +9,8 @@
 	<script type="text/javascript" src="Keyboard.js"></script>
 	<script type="text/javascript" src="Conversations.js"></script>
 	<script type="text/javascript" src="Settings.js"></script>
-	<title>Ludum Dare 29</title>
+	<script type="text/javascript" src="Inventory.js"></script>
+	<title>Ludum Dare 29 (conversation test)</title>
 	<style>
 		*{
 			background: black;
@@ -41,6 +42,11 @@
 			margin-top:-5em;
 			background: white;
 		}
+		#inv{
+			position:absolute;
+			right: 0;
+			top: 0;
+		}
 	</style>
 	<script type="text/javascript">
 		//window.addEventListener("keydown", Keyboard.keydown);
@@ -49,8 +55,8 @@
 			console.log("Selected convo. Starting test.")
 			wrapper.innerHTML = "<canvas id='canvas' height='600' width='800'>"+
 				"Your browser is too old to play this game. (Or has too many security settings active.)" +
-				"</canvas>"
-			var canvas = document.getElementById("canvas")
+				"</canvas>";
+			var canvas = document.getElementById("canvas");
 			var game = new GameLoop(canvas);
 			game.gui = new GUI(select.options[select.selectedIndex].value);
 			game.start();
@@ -60,15 +66,19 @@
 </head>
 <body>
 	
-
 	<div class="wrapper" id="wrapper"> 
 		<select id="select">
 
 		</select>
 		<button onclick="selectClick();">Go</button>
 	</div>
+	<div id="inv"></div>
 
 	<script>
+		var inventoryView = document.getElementById("inv");
+		console.log("Inventory shown in:");
+		console.log(inventoryView);
+		Inventory.printToElement = inventoryView;
 		var select = document.getElementById("select");
 		for (var i = 0; i < Object.keys(Conversations).length; i++) {
 			var conv = Object.keys(Conversations)[i];

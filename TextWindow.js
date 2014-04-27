@@ -61,8 +61,11 @@ function OptionsWindow(options, gui) {
 			ow.selected = 0;
 	}
 	this.enter = function(){
+		var option = ow.options[ow.selected];
+		if(option.yields)
+			Inventory.add(option.yields);
+		var dest = option["leadsTo"];
 		ow.selected = 0;
-		var dest = ow.options[ow.selected]["leadsTo"];
 		if(ow.options[ow.selected].levelTransition){
 			console.log("Loading level: " + dest)
 			game.loadLevel(dest)
@@ -110,7 +113,11 @@ function GUI(conversationID) {
 		var options = [];
 		var optionStrings = s["options"];
 		for (var i = 0; i < optionStrings.length; i++) {
-			options.push(gui.conversation["options"][optionStrings[i]]);
+			var theOption = gui.conversation["options"][optionStrings[i]];
+			if(theOption.requires && !Inventory.hasAll(theOption.requires))
+				console.log("Option not displayed: " + theOption.text);
+			else
+				options.push(theOption);
 		};
 		return options;
 	}
