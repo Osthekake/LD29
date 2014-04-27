@@ -59,7 +59,7 @@ var Sprites = {
 		frames: 1
 	},
 	"lift" : {
-		src : "objects/lift.png",
+		src : "objects/elevator.png",
 		bounds: {width:50, height:100},
 		frames: 1
 	}
@@ -109,8 +109,7 @@ var Levels = {
 				mandatory : true,
 				elevator : {
 					distance : 500,
-					position : "up",
-					debug : "lolololol"
+					position : "up"
 				}
 			}
 		]
@@ -130,12 +129,12 @@ var Levels = {
 			{
 				sprite : "left_arrow",
 				bounds : {x:0, y:520, width:50, height:50},
-				transition : "bridge",
+				transition : "bridge01",
 				hint : "Go left"
 			}
 		]
 	},
-	"bridge" : {
+	"bridge01" : {
 		spawn : {
 			"hole" : {x:700, y:50},
 			"ship" : {x:50, y:50}
@@ -167,7 +166,7 @@ var Levels = {
 			{
 				sprite : "right_arrow",
 				bounds : {x:750, y:90, width:50, height:50},
-				transition : "bridge",
+				transition : "bridge01",
 				hint : "Go right"
 			},
 			{
@@ -205,14 +204,123 @@ var Levels = {
 	},
 	"ruins" : {
 		spawn : {
-			"ship" : {x:700, y:240}
+			"ship" : {x:700, y:240},
+			"bridge" : {x:10, y:240}
 		},
 		src : "bg/battlefield.png",
 		objects : [
 			{
 				sprite : "right_arrow",
 				bounds : {x:750, y:270, width:50, height:50},
-				transition : "hole",
+				transition : "ship",
+				hint : "Go right"
+			},{
+				sprite : "left_arrow",
+				bounds : {x:10, y:270, width:50, height:50},
+				transition : "bridge02",
+				hint : "Go left"
+			}
+		]
+	},
+	"bridge02" : {
+		spawn : {
+			"ruins" : {x:700, y:390},
+			"cavern" : {x:10, y:390}
+		},
+		src : "bg/corridor02.png",
+		objects : [
+			{
+				sprite : "right_arrow",
+				bounds : {x:750, y:420, width:50, height:50},
+				transition : "ruins",
+				hint : "Go right"
+			},{
+				sprite : "left_arrow",
+				bounds : {x:10, y:420, width:50, height:50},
+				transition : "cavern",
+				hint : "Go left"
+			}
+		]
+	},
+	"cavern" : {
+		spawn : {
+			"bridge" : {x:700, y:70},
+			"overlook_high" : {x:0, y:70},
+			"overlook_low" : {x:0, y:450}
+		},
+		src : "bg/elevator.png",
+		objects : [
+			{
+				sprite : "right_arrow",
+				bounds : {x:750, y:100, width:50, height:50},
+				transition : "bridge02",
+				hint : "Go right"
+			},{
+				sprite : "left_arrow",
+				bounds : {x:10, y:100, width:50, height:50},
+				transition : "overlook_high",
+				hint : "Go left"
+			},{
+				sprite : "left_arrow",
+				bounds : {x:10, y:470, width:50, height:50},
+				transition : "overlook_low",
+				hint : "Go left"
+			},
+			{
+				sprite : "lift",
+				bounds : {x:330, y:30, width:120, height:150},
+				elevator : {
+					distance : 400,
+					position : "up"
+				},
+				hint : "Use elevator"
+			}
+		]
+	},
+	"overlook_high" : {
+		spawn : {
+			"cavern" : {x:700, y:100},
+			"factory" : {x:600, y:100}
+		},
+		src : "bg/overlook.png",
+		objects : [
+			{
+				sprite : "right_arrow",
+				bounds : {x:750, y:130, width:50, height:50},
+				transition : "cavern",
+				hint : "Go right"
+			},{
+				sprite : "down_arrow",
+				bounds : {x:600, y:130, width:50, height:50},
+				transition : "factory",
+				hint : "Follow ledge"
+			}
+		]
+	},
+	"overlook_low" : {
+		spawn : {
+			"cavern" : {x:700, y:450}
+		},
+		src : "bg/overlook.png",
+		objects : [
+			{
+				sprite : "right_arrow",
+				bounds : {x:750, y:470, width:50, height:50},
+				transition : "cavern",
+				hint : "Go right"
+			}
+		]
+	},
+	"factory" : {
+		spawn : {
+			"overlook_high" : {x:700, y:320}
+		},
+		src : "bg/valves.png",
+		objects : [
+			{
+				sprite : "right_arrow",
+				bounds : {x:750, y:350, width:50, height:50},
+				transition : "overlook_high",
 				hint : "Go right"
 			}
 		]
@@ -324,7 +432,7 @@ var Hero = {
 			var other = this.intersects[0];
 			context.fillStyle = Settings.popupColor;
 			context.font = Settings.font;
-			if(!other.mandatory && (other.conversation || other.transition))
+			if(!other.mandatory && (other.conversation || other.transition || other.elevatorData))
 				context.fillText("Press [enter]", 250, 60);
 			if(other.hint)
 				context.fillText(other.hint, 270, 20);
