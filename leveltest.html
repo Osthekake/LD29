@@ -42,20 +42,39 @@
 			background: white;
 		}
 	</style>
-</head>
-<body>
-	<div class="wrapper"> 
-		<canvas id="canvas" height="600" width="800">
-			Your browser is too old to play this game. (Or has too many security settings active.)
-		</canvas>
-	</div>
 	<script type="text/javascript">
 		//window.addEventListener("keydown", Keyboard.keydown);
-		var canvas = document.getElementById("canvas")
-		var game = new GameLoop(canvas);
-		//game.gui = new GUI("test");
-		game.level = new Level("surface", "start");
-		game.start();
+		var game = null;
+		var selectClick = function(){
+			console.log("Selected convo. Starting test.")
+			wrapper.innerHTML = "<canvas id='canvas' height='600' width='800'>"+
+				"Your browser is too old to play this game. (Or has too many security settings active.)" +
+				"</canvas>"
+			var canvas = document.getElementById("canvas")
+			game = new GameLoop(canvas);
+			game.level = new Level(select.options[select.selectedIndex].value);
+			game.start();
+		};
+		
+	</script>
+</head>
+<body>
+	
+
+	<div class="wrapper" id="wrapper"> 
+		<select id="select">
+
+		</select>
+		<button onclick="selectClick();">Go</button>
+	</div>
+
+	<script>
+		var select = document.getElementById("select");
+		for (var i = 0; i < Object.keys(Levels).length; i++) {
+			var conv = Object.keys(Levels)[i];
+			select.innerHTML += "<option id='"+conv+"'>"+conv+"</option>";
+		};
+		var wrapper = document.getElementById("wrapper");
 	</script>
 </body>
 </html>

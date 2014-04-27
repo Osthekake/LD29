@@ -40,7 +40,8 @@ function GameLoop(canvas) {
 
 	this.loadLevel = function(levelname) {
 		game.stop();
-		game.level = new Level(levelname);
+		var old = game.level.name;
+		game.level = new Level(levelname, old);
 		game.start();
 	}
 

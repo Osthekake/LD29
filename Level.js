@@ -9,37 +9,53 @@ function intersectRect(r1, r2) {
 
 var Sprites = {
 	"tree" : {
-		src : "tree.png",
+		src : "objects/tree.png",
 		bounds: {width:50, height:100},
 		frames: 1
 	},
 	"bush" : {
-		src : "bush.png",
+		src : "objects/bush.png",
 		bounds: {width:50, height:70},
 		frames: 1
 	},
 	"hole" : {
-		src : "hole.png",
+		src : "objects/hole.png",
 		bounds: {width:150, height:20},
 		frames: 1
 	},
 	"light" : {
-		src : "light.png",
+		src : "objects/light.png",
 		bounds: {width:100, height:300},
 		frames: 3
 	},
 	"hero" : {
-		src : "hero.png",
+		src : "objects/hero.png",
 		bounds: {width:70, height:90},
 		frames: 1
+	},
+	"left_arrow" : {
+		src : "objects/left.png",
+		bounds: {width:50, height:50},
+		frames: 4
+	},
+	"right_arrow" : {
+		src : "objects/right.png",
+		bounds: {width:50, height:50},
+		frames: 4
+	},
+	"down_arrow" : {
+		src : "objects/down.png",
+		bounds: {width:50, height:50},
+		frames: 4
 	}
 };
 
 var Levels = {
 	"surface" : {
-		spawn : {x:700, y:500},
-		exit : {x:100, y:500, leadsTo:"well"},
-		src : "meadow.png",
+		spawn : {
+			"start" : {x:700, y:500}
+		},
+		src : "bg/meadow.png",
 		objects : [
 			{
 				sprite : "tree",
@@ -55,27 +71,113 @@ var Levels = {
 				sprite : "hole",
 				bounds : {x:300, y:560, width:150, height:20},
 				conversation : "Intro",
-				mandatory : "hole"
+				mandatory : true
 			}
 		]
 	},
 	"hole" : {
-		spawn : {x:400, y:500},
-		exit : {x:100, y:500, leadsTo:"well"},
-		src : "bottom.png",
+		spawn : {
+			"surface" : {x:400, y:500},
+			"bridge" : {x:0, y:520}
+		},
+		src : "bg/bottom.png",
 		objects : [
 			{
 				sprite : "light",
 				bounds : {x:300, y:0, width:100, height:300},
 				conversation : undefined
+			},
+			{
+				sprite : "left_arrow",
+				bounds : {x:0, y:520, width:50, height:50},
+				transition : "bridge",
+				hint : "Go left"
+			}
+		]
+	},
+	"bridge" : {
+		spawn : {
+			"hole" : {x:700, y:50},
+			"ship" : {x:50, y:50}
+		},
+		src : "bg/corridor01.png",
+		objects : [
+			{
+				sprite : "right_arrow",
+				bounds : {x:750, y:90, width:50, height:50},
+				transition : "hole",
+				hint : "Go right"
+			},
+			{
+				sprite : "left_arrow",
+				bounds : {x:0, y:90, width:50, height:50},
+				transition : "ship",
+				hint : "Go left"
+			}
+		]
+	},
+	"ship" : {
+		spawn : {
+			"bridge" : {x:700, y:50},
+			"deck" : {x:300, y:50},
+			"ruins" : {x:50, y:50}
+		},
+		src : "bg/ship.png",
+		objects : [
+			{
+				sprite : "right_arrow",
+				bounds : {x:750, y:90, width:50, height:50},
+				transition : "bridge",
+				hint : "Go right"
+			},
+			{
+				sprite : "left_arrow",
+				bounds : {x:0, y:90, width:50, height:50},
+				transition : "ruins",
+				hint : "Go left"
+			},
+			{
+				sprite : "down_arrow",
+				bounds : {x:300, y:90, width:50, height:50},
+				transition : "deck",
+				hint : "Board ship"
+			}
+		]
+	},
+	"deck" : {
+		spawn : {
+			"ship" : {x:700, y:280}
+		},
+		src : "bg/deck.png",
+		objects : [
+			{
+				sprite : "right_arrow",
+				bounds : {x:750, y:290, width:50, height:50},
+				transition : "ship",
+				hint : "Go right"
+			}
+		]
+	},
+	"ruins" : {
+		spawn : {
+			"ship" : {x:700, y:240}
+		},
+		src : "bg/battlefield.png",
+		objects : [
+			{
+				sprite : "right_arrow",
+				bounds : {x:750, y:270, width:50, height:50},
+				transition : "hole",
+				hint : "Go right"
 			}
 		]
 	}
 };
 
-function Level(name) {
+function Level(name, from) {
 	console.log("Building level. ("+name+") level data:");
 	var level = this;
+	level.name = name;
 	var levelData = Levels[name];
 	console.log(levelData);
 	this.objects = [];
@@ -84,7 +186,11 @@ function Level(name) {
 	};
 
 	this.background = undefined;
-	Hero.moveTo(levelData.spawn);
+	if(levelData.spawn[from])
+		Hero.moveTo(levelData.spawn[from]);
+	else{
+		Hero.moveTo(levelData.spawn[Object.keys(levelData.spawn)[0]]);
+	}
 	Hero.level = level;
 	this.setBGImage = function(file){
 		var img = new Image();
@@ -139,14 +245,12 @@ var Hero = {
 		if(this.level){
 			for (var i = 0; i < this.level.objects.length; i++) {
 				var obj = this.level.objects[i];
-				if(obj.conversation && obj.intersects(this.location))
+				if(obj.intersects(this.location)){
+					this.intersects.push(this.level.objects[i]);
 					if(obj.mandatory){
-						console.log("interract with something ");
-						console.log(obj.conversation);
-						game.gui = new GUI(obj.conversation);
-					}else{
-						this.intersects.push(this.level.objects[i]);	
+						this.enter();
 					}
+				}
 			};
 		}
 	},
@@ -155,9 +259,13 @@ var Hero = {
 	draw : function(context){
 		this.sprite.draw(this.location, context);
 		if(this.intersects.length > 0){
+			var other = this.intersects[0];
 			context.fillStyle = Settings.popupColor;
 			context.font = Settings.font;
-			context.fillText("Press [enter] to interact", 250, 100);
+			if(!other.mandatory && (other.conversation || other.transition))
+				context.fillText("Press [enter]", 250, 60);
+			if(other.hint)
+				context.fillText(other.hint, 270, 20);
 		}
 	},
 	//keyboard input
@@ -169,9 +277,15 @@ var Hero = {
 	},
 	enter : function(){
 		if(this.intersects[0]){
+			var other = this.intersects[0];
 			console.log("interract with something ");
-			console.log(this.intersects[0].conversation);
-			game.gui = new GUI(this.intersects[0].conversation);
+			console.log(other);
+
+			if(other.conversation){
+				game.gui = new GUI(other.conversation);	
+			}else if(other.transition){
+				game.loadLevel(other.transition);
+			}
 		}
 	}
 }
@@ -181,7 +295,9 @@ function LevelObject(data) {
 	object.sprite = new Sprite(data.sprite);
 	object.bounds = data.bounds;
 	object.conversation = data.conversation;
+	object.transition = data.transition;
 	object.mandatory = data.mandatory;
+	object.hint = data.hint;
 
 	this.update = function(delta) {
 		// change animation frame
