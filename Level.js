@@ -62,6 +62,21 @@ var Sprites = {
 		src : "objects/elevator.png",
 		bounds: {width:50, height:100},
 		frames: 1
+	},
+	"valve" : {
+		src : "objects/valve.png",
+		bounds: {width:50, height:50},
+		frames: 1
+	},
+	"notepad" : {
+		src : "objects/notepad.png",
+		bounds: {width:50, height:50},
+		frames: 1
+	},
+	"lever" : {
+		src : "objects/lever.png",
+		bounds: {width:50, height:50},
+		frames: 1
 	}
 };
 
@@ -294,6 +309,10 @@ var Levels = {
 				bounds : {x:600, y:130, width:50, height:50},
 				transition : "factory",
 				hint : "Follow ledge"
+			},
+			{
+				sprite : "notepad",
+				bounds : {x:660, y:510, width:50, height:50}
 			}
 		]
 	},
@@ -308,6 +327,13 @@ var Levels = {
 				bounds : {x:750, y:470, width:50, height:50},
 				transition : "cavern",
 				hint : "Go right"
+			},
+			{
+				sprite : "notepad",
+				bounds : {x:660, y:510, width:50, height:50},
+				conversation : "notebook",
+				remove : true,
+				hint : "Small notepad"
 			}
 		]
 	},
@@ -322,6 +348,30 @@ var Levels = {
 				bounds : {x:750, y:350, width:50, height:50},
 				transition : "overlook_high",
 				hint : "Go right"
+			},
+			{
+				sprite : "valve",
+				bounds : {x:230, y:290, width:50, height:50},
+				valve : "a",
+				hint : "Turn valve (a)"
+			},
+			{
+				sprite : "valve",
+				bounds : {x:330, y:290, width:50, height:50},
+				valve : "b",
+				hint : "Turn valve (b)"
+			},
+			{
+				sprite : "valve",
+				bounds : {x:430, y:290, width:50, height:50},
+				valve : "c",
+				hint : "Turn valve (c)"
+			},
+			{
+				sprite : "lever",
+				bounds : {x:630, y:370, width:50, height:50},
+				conversation : "lever",
+				hint : "Pull lever"
 			}
 		]
 	}
