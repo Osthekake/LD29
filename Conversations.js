@@ -233,7 +233,8 @@ var Conversations = {
 		"options" : {
 			"page01" : {
 				"leadsTo" : "listings01",
-				"text" : "Read the Knight Fight Listings"
+				"text" : "Read the Knight Fight Listings",
+				"grants" : "tfbluffinfo"
 			},
 			"page02" : {
 				"leadsTo" : "index01",
@@ -268,7 +269,7 @@ var Conversations = {
 					"noteskip01"]
 			},
 			"notebook03" : {
-				"text" : "There's not much that you understand here, but you notice that\nboth Sir Face and Sir Passable seem to respect each other a lot.\nSir Face mentions that Sir Passable has the best armour she's\never seen, and Sir Passable says that Sir Face's stance is\n rock solid and hard to breach.",
+				"text" : "There's not much that you understand here, but you notice that\nboth Sir Face and Sir Passable seem to respect each other a lot.\nSir Face mentions that Sir Passable has the best armour she's\never seen, and Sir Passable says that Sir Face's stance is\nrock solid and hard to breach.",
 				"options" : [
 					"noteskip01"]
 			},
@@ -324,6 +325,91 @@ var Conversations = {
 				"leadsTo" : undefined,
 				"text" : "Go back to looking around"
 			}
+		}
+	},
+	"townfans" : {
+		"start" : "townfans01",
+		"screens" : {
+			"townfans01" : {
+				"text" : "A group of people wearing team colours are standing talking\nabout the upcoming match between Sir Face and Sir Passable.",
+				"options" : [
+					"tflisten01",
+					"tftalk01",
+					"tfleave01"]
+			},
+			"townfans02" : {
+				"text" : "The group are evenly split between Sir Face and Sir Passable,\nexcept one loud fan of Sir Pryce who gets shouted down a lot.",
+				"options" : [
+					"tflisten02",
+					"tftalk02",
+					"tfleave01"]
+			},
+			"townfans03" : {
+				"text" : "The group looks at your clothes a little oddly but are happy to\ninclude you in the conversation. Unfortunately you just fell\nthrough a well and you know nothing about this place.",
+				"options" : [
+					"tfbluff01",
+					"tfbluff02",
+					"tfleave02"]
+			},
+			"townfans04" : {
+				"text" : "They stare at you and turn away, muttering about strange\nforeigners. Today is not your day.",
+				"options" : [
+					"tfleave03"]
+			},
+			"townfans05" : {
+				"text" : "Your analysis sparks an argument, but it's a friendly one. You\n don't learn anything particularly interesting about the fights\nbut you do notice that Sir Pryce's advocate says that \"The only\nway is down\", which strikes you as a little odd.\nThe conversation winds down and you wander off, pondering a\nworld in which up is safe and down is scary, until you trip on\na mushroom and decide to watch where you're going instead.",
+				"options" : [
+					"tfleave02"]
+			},
+			"townfans06" : {
+				"text" : "They notice you listening in and walk away, looking at you oddly.\nNot your lucky day, it seems.",
+				"options" : [
+					"tfleave03"]
+			},
+			"townfans07" : {
+				"text" : "You join in with Sir Pryce's fan, because he clearly needs a hand.\nThe conversation's pretty boring though.",
+				"options" : [
+				"tfleave01"]
+			}
+		},
+		"options" : {
+			"tflisten01" : {
+				"leadsTo" : "townfans02",
+				"text" : "Listen in to their conversation"
+			},
+			"tflisten02" : {
+				"leadsTo" : "townfans06",
+				"text" : "Listen a little longer"
+			},
+			"tftalk01" : {
+				"leadsTo" : "townfans03",
+				"text" : "Join in"
+			},
+			"tftalk02" : {
+				"leadsTo" : "townfans07",
+				"text" : "Join in"
+			},
+			"tfleave01" : {
+				"leadsTo" : undefined,
+				"text" : "Leave them to it"
+			},
+			"tfleave02" : {
+				"leadsTo" : undefined,
+				"text" : "Smile and walk away"
+ 			},
+ 			"tfleave03" : {
+ 				"leadsTo" : undefined,
+ 				"text" : "Walk away quickly"
+ 			},
+			"tfbluff01" : {
+				"leadsTo" : "townfans04",
+				"text" : "How hard can this be? Come on you reds!"
+			},
+			"tfbluff02" : {
+				"leadsTo" : "townfans05",
+				"requires" : ["tfbluffinfo"],
+				"text" : "You read the paper, you got this one"
+			},
 		}
 	}
 };
