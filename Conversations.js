@@ -409,7 +409,55 @@ var Conversations = {
 				"leadsTo" : "townfans05",
 				"requires" : ["tfbluffinfo"],
 				"text" : "You read the paper, you got this one"
-			},
+			}
 		}
-	}
+	},
+	"official" : {
+		"start" : "official01",
+		"screens" : {
+			"official01" : {
+				"text" : "A very officious looking official is standing guard here.",
+				"options" : [
+					"offtalk01",
+					"offleave01"]
+			},
+			"official02" : {
+				"text" : "You ask if you can get past. She says no.",
+				"options" : [
+					"offwhy01",
+					"offsorry01",
+					"offleave01"]
+			},
+			"official03" : {
+				"text" : "She ignores your politeness.\nYou stick your tongue out. She ignores that too.",
+				"options" : [
+					"offleave01"]
+			},
+			"offical04" : {
+				"text" : "She quotes a very long piece of legislation at you. You're\npretty sure it translates to \"Because I said so\".",
+				"options" : [
+					"offleave01",
+					"offwhy01"]
+			}
+		},
+		"options" : {
+			"offtalk01" : {
+				"leadsTo" : "official02",
+				"text" : "She looks friendly enough. Talk to her"
+			},
+			"offleave01" : {
+				"leadsTo" : undefined,
+				"text" : "She's clearly not moving. Leave"
+			},
+			"offsorry01" : {
+				"leadsTo" : "official03",
+				"text" : "Apologise and leave"
+			}
+			"offwhy01" : {
+				"leadsTo" : "offical04",
+				"text" : "Ask why"
+			}
+		}
+	},
+	
 };
