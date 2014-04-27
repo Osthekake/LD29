@@ -184,4 +184,63 @@ var Conversations = {
 			}
 		}
 	}
+	"newspaper" : {
+		"start" : "newspaper01",
+		"screens" : {
+			"newspaper01" : {
+				"text" : "You find a single sheet of pulpy paper. It smells a little like\nmushrooms. It appears to be written in English. That's really\nconvenient, isn't it?\nThree articles attract your attention.",
+				"options" : [
+					"page01",
+					"page02",
+					"page03"]
+			},
+			"newspaper02" : {
+				"text" : "What would you like to read now?",
+				"options" : [
+					"page01",
+					"page02",
+					"page03",
+					"exit01"]
+			},
+			"listings01" : {
+				"text" : "A list of names are followed by various numbers. You can guess\nat Wins, Losses, Draws, and total points, but there are a lot\nof other numbers and abbreviations you don't understand.\nThe top ranked fighters are Sir Face and Sir Passable. They seem\nto be better than the rest by a long way.\nThere's a small advert beneath the list which says \"Knight\nFight Night, where knights fight with all their might all night!\"",
+				"options" : [
+					"more01",
+					"exit01"]
+			},
+			"index01" : {
+				"text" : "There's a graph and a brief discussion of shares. Plumber Bros\nKingdom of Mushrooms is holding steady, Sticky Fingers Glue\nSuppliers is at rock top, and Guy d'Ropes Security is\ndropping sharply.",
+				"options" : [
+					"more01",
+					"exit01"]
+			},
+			"travel01" : {
+				"text" : "Various announcements about bridge closures and travel\nrestrictions before the newly created Annual Hyper-Productive\nVegetable Boiling Experiment and Explosive Over-Production\ncelebratory cornucopia.",
+				"options" : [
+				"more01",
+				"exit01"
+			}
+		},
+		"options" : (
+			"page01" : {
+				"leadsTo" : "listings01",
+				"text" : "Read the Knight Fight Listings"
+			},
+			"page02" : {
+				"leadsTo" : "index01",
+				"text" : "Read the Drow Jones Index"
+			},
+			"page03" : {
+				"leadsTo" : "travel01",
+				"text" : "Read the Travel Advisory notice"
+			},
+			"exit01" : {
+				"leadsTo" : "somethingsomethingsomthing?",
+				"text" : "Put the paper down"
+			},
+			"more01" : {
+				"leadsTo" : "newspaper02",
+				"text" : "Read more"
+			}
+	}
 };
