@@ -43,10 +43,20 @@ var Sprites = {
 		bounds: {width:50, height:50},
 		frames: 4
 	},
-	"down_arrow" : {
-		src : "objects/down.png",
+	"water" : {
+		src : "objects/waterblob.png",
+		bounds: {width:150, height:150},
+		frames: 1
+	},
+	"paper" : {
+		src : "objects/paper.png",
 		bounds: {width:50, height:50},
-		frames: 4
+		frames: 1
+	},
+	"lift" : {
+		src : "objects/lift.png",
+		bounds: {width:50, height:100},
+		frames: 1
 	}
 };
 
@@ -72,6 +82,31 @@ var Levels = {
 				bounds : {x:300, y:560, width:150, height:20},
 				conversation : "Intro",
 				mandatory : true
+			}
+		]
+	},
+	"well" : {
+		spawn : {
+			"surface" : {x:340, y:20}
+		},
+		src : "bg/well.png",
+		objects : [
+			{
+				sprite : "hole",
+				bounds : {x:300, y:560, width:150, height:20},
+				transition : "hole",
+				hint : "AAAAAAA",
+				mandatory : true
+			},
+			{
+				sprite : "water",
+				bounds : {x:300, y:-30, width:130, height:200},
+				mandatory : true,
+				elevator : {
+					distance : 500,
+					position : "up",
+					debug : "lolololol"
+				}
 			}
 		]
 	},
@@ -222,9 +257,17 @@ var Hero = {
 	sprite : new Sprite("hero"),
 	moving : null,
 	location : {x:0, y:0, height:90, width:70},
+	controlling : true,
+	line : undefined,
 	moveTo : function(where) { 
 		this.location.x = where.x;
 		this.location.y = where.y;
+	},
+	elevator : function(distance) {
+		console.log("starting elevator for hero");
+		this.controlling = false;
+		console.log("this.location.y " + this.location.y + " distance " + distance);
+		this.line = new Line(this.location.y, this.location.y + distance);
 	},
 	update : function(delta) {
 		this.sprite.update(delta);
@@ -242,7 +285,7 @@ var Hero = {
 			}
 		}
 		this.intersects = [];
-		if(this.level){
+		if(this.level && this.controlling){
 			for (var i = 0; i < this.level.objects.length; i++) {
 				var obj = this.level.objects[i];
 				if(obj.intersects(this.location)){
@@ -252,6 +295,15 @@ var Hero = {
 					}
 				}
 			};
+		}
+		if(this.line){
+			//console.log(this);
+			var y = this.line.getPos(delta);
+			this.location.y = y;
+			if(this.line.done()){
+				this.line = undefined;
+				this.controlling = true;
+			}
 		}
 	},
 	intersects : [],
@@ -270,13 +322,15 @@ var Hero = {
 	},
 	//keyboard input
 	right : function(){
-		this.moving = "right"
+		if(this.controlling)
+			this.moving = "right"
 	},
 	left :  function(){
-		this.moving = "left"
+		if(this.controlling)
+			this.moving = "left"
 	},
 	enter : function(){
-		if(this.intersects[0]){
+		if(this.controlling && this.intersects[0]){
 			var other = this.intersects[0];
 			console.log("interract with something ");
 			console.log(other);
@@ -285,8 +339,45 @@ var Hero = {
 				game.gui = new GUI(other.conversation);	
 			}else if(other.transition){
 				game.loadLevel(other.transition);
+			}else if(other.elevatorData){
+				var edata = other.elevatorData;
+				//console.log("elevator data");
+				//console.log(edata);
+				//console.log(edata.debug);
+				if(edata.position == "up"){
+					Hero.elevator(edata.distance);
+					other.elevator(edata.distance);	
+					edata.position = "down";
+				}else{
+					Hero.elevator(-edata.distance);
+					other.elevator(-edata.distance);
+					edata.position = "up";
+				}
+				
 			}
 		}
+	}
+}
+
+function Line(a, b) {
+	var line = this;
+	this.a = a;
+	this.b = b;
+	this.time = 3000;
+	this.perTime = (this.b - this.a) / this.time;
+	line.timePassed = 0;
+	//console.log("Making line from " + this.a + " to " + this.b + " with derivate " + this.perTime);
+	this.getPos = function(delta) {
+		line.timePassed += delta;
+		//console.log("line.a " + line.a + " line.timePassed " + line.timePassed + " line.perTime " + line.perTime);
+		var val = line.a + line.timePassed * line.perTime;
+		if(line.timePassed > line.time)
+			val = line.b;
+		//console.log("position will be updated with " + val);
+		return val;
+	}
+	this.done = function() {
+		return line.timePassed > line.time;
 	}
 }
 
@@ -298,10 +389,22 @@ function LevelObject(data) {
 	object.transition = data.transition;
 	object.mandatory = data.mandatory;
 	object.hint = data.hint;
+	object.elevatorData = data.elevator;
+
+	object.line = null;
 
 	this.update = function(delta) {
 		// change animation frame
 		object.sprite.update(delta);
+		//move if on a line.
+		if(object.line != null){
+			//console.log(object.line);
+			var y = object.line.getPos(delta);
+			object.bounds.y = y;
+			if(object.line.done()){
+				object.line = null;
+			}
+		}
 	}
 	this.draw = function(context){
 		//draw sprite with correct animation frame
@@ -309,6 +412,11 @@ function LevelObject(data) {
 	}
 	this.intersects = function(rect){
 		return intersectRect(object.bounds, rect);
+	}
+	this.elevator = function(distance) {
+		console.log("starting elevator for object");
+		object.line = new Line(object.bounds.y, object.bounds.y + distance);
+		console.log(object.line);
 	}
 }
 

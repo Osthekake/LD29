@@ -154,8 +154,9 @@ var Conversations = {
 				"text" : "ARGH!"
 			},
 			"scream02" : {
-				"leadsTo" : "intro10",
-				"text" : "AAAA - gack water up nose - AARGH"
+				"leadsTo" : "well",
+				"text" : "AAAA - gack water up nose - AARGH",
+				levelTransition : true
 			},
 			"swim01" : {
 				"leadsTo" : "intro11",
@@ -178,12 +179,12 @@ var Conversations = {
 				"text" : "Pull the lever"
 			},
 			"goforth01" : {
-				"leadsTo" : "hole",
+				"leadsTo" : "well",
 				"text" : "Gather yourself and venture forth across the bridge",
 				levelTransition : true
 			}
 		}
-	}
+	},
 	"newspaper" : {
 		"start" : "newspaper01",
 		"screens" : {
@@ -217,11 +218,12 @@ var Conversations = {
 			"travel01" : {
 				"text" : "Various announcements about bridge closures and travel\nrestrictions before the newly created Annual Hyper-Productive\nVegetable Boiling Experiment and Explosive Over-Production\ncelebratory cornucopia.",
 				"options" : [
-				"more01",
-				"exit01"
+					"more01",
+					"exit01"
+				]
 			}
 		},
-		"options" : (
+		"options" : {
 			"page01" : {
 				"leadsTo" : "listings01",
 				"text" : "Read the Knight Fight Listings"
@@ -242,5 +244,6 @@ var Conversations = {
 				"leadsTo" : "newspaper02",
 				"text" : "Read more"
 			}
+		}
 	}
 };
