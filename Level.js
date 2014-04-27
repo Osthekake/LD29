@@ -77,6 +77,11 @@ var Sprites = {
 		src : "objects/lever.png",
 		bounds: {width:50, height:50},
 		frames: 1
+	},
+	"fans" : {
+		src : "objects/fans.png",
+		bounds: {width:300, height:120},
+		frames: 1
 	}
 };
 
@@ -214,6 +219,11 @@ var Levels = {
 				bounds : {x:550, y:310, width:50, height:50},
 				conversation : "newspaper",
 				hint : "read newspaper"
+			},{
+				sprite : "fans",
+				bounds : {x:40, y:250, width:300, height:120},
+				conversation : "townfans",
+				hint : "Speak to crowd"
 			}
 		]
 	},
