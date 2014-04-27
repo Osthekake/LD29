@@ -205,7 +205,7 @@ var Levels = {
 	"ruins" : {
 		spawn : {
 			"ship" : {x:700, y:240},
-			"bridge" : {x:10, y:240}
+			"bridge02" : {x:10, y:240}
 		},
 		src : "bg/battlefield.png",
 		objects : [
@@ -246,7 +246,7 @@ var Levels = {
 		spawn : {
 			"bridge" : {x:700, y:70},
 			"overlook_high" : {x:0, y:70},
-			"overlook_low" : {x:0, y:450}
+			"overlook_low" : {x:0, y:470}
 		},
 		src : "bg/elevator.png",
 		objects : [
