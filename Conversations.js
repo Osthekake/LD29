@@ -452,7 +452,7 @@ var Conversations = {
 			"offsorry01" : {
 				"leadsTo" : "official03",
 				"text" : "Apologise and leave"
-			}
+			},
 			"offwhy01" : {
 				"leadsTo" : "offical04",
 				"text" : "Ask why"

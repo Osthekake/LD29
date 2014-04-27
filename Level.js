@@ -82,6 +82,21 @@ var Sprites = {
 		src : "objects/fans.png",
 		bounds: {width:300, height:120},
 		frames: 1
+	},
+	"guard" : {
+		src : "objects/guard.png",
+		bounds: {width:50, height:120},
+		frames: 1
+	},
+	"face" : {
+		src : "objects/face.png",
+		bounds: {width:70, height:120},
+		frames: 1
+	},
+	"passable" : {
+		src : "objects/passable.png",
+		bounds: {width:70, height:120},
+		frames: 1
 	}
 };
 
@@ -137,7 +152,7 @@ var Levels = {
 	"hole" : {
 		spawn : {
 			"surface" : {x:400, y:500},
-			"bridge" : {x:0, y:520}
+			"bridge01" : {x:0, y:520}
 		},
 		src : "bg/bottom.png",
 		objects : [
@@ -200,6 +215,12 @@ var Levels = {
 				bounds : {x:300, y:90, width:50, height:50},
 				transition : "deck",
 				hint : "Board ship"
+			},
+			{
+				sprite : "guard",
+				bounds : {x:200, y:20, width:50, height:120},
+				conversation : "official",
+				hint : "Official."
 			}
 		]
 	},
@@ -244,6 +265,14 @@ var Levels = {
 				bounds : {x:10, y:270, width:50, height:50},
 				transition : "bridge02",
 				hint : "Go left"
+			},{
+				sprite : "face",
+				bounds : {x:210, y:210, width:70, height:120},
+				hint : "Sir Face"
+			},{
+				sprite : "passable",
+				bounds : {x:410, y:210, width:70, height:120},
+				hint : "Sir Passable"
 			}
 		]
 	},
