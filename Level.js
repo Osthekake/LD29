@@ -43,6 +43,11 @@ var Sprites = {
 		bounds: {width:50, height:50},
 		frames: 4
 	},
+	"down_arrow" : {
+		src : "objects/down.png",
+		bounds: {width:50, height:50},
+		frames: 4
+	},
 	"water" : {
 		src : "objects/waterblob.png",
 		bounds: {width:150, height:150},
