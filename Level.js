@@ -6,10 +6,77 @@ function intersectRect(r1, r2) {
 		r2.y + r2.height < r1.y);
 }
 
+
+var Sprites = {
+	"tree" : {
+		src : "tree.png",
+		bounds: {width:50, height:100},
+		frames: 1
+	},
+	"bush" : {
+		src : "bush.png",
+		bounds: {width:50, height:70},
+		frames: 1
+	},
+	"hole" : {
+		src : "hole.png",
+		bounds: {width:150, height:20},
+		frames: 1
+	},
+	"light" : {
+		src : "light.png",
+		bounds: {width:100, height:300},
+		frames: 3
+	},
+	"hero" : {
+		src : "hero.png",
+		bounds: {width:70, height:90},
+		frames: 1
+	}
+};
+
+var Levels = {
+	"surface" : {
+		spawn : {x:700, y:500},
+		exit : {x:100, y:500, leadsTo:"well"},
+		src : "meadow.png",
+		objects : [
+			{
+				sprite : "tree",
+				bounds : {x:20, y:300, width:130, height:280},
+				conversation : "test"
+			},
+			{
+				sprite : "bush",
+				bounds : {x:750, y:500, width:50, height:70},
+				conversation : undefined
+			},
+			{
+				sprite : "hole",
+				bounds : {x:300, y:560, width:150, height:20},
+				conversation : "Intro",
+				mandatory : "hole"
+			}
+		]
+	},
+	"hole" : {
+		spawn : {x:400, y:500},
+		exit : {x:100, y:500, leadsTo:"well"},
+		src : "bottom.png",
+		objects : [
+			{
+				sprite : "light",
+				bounds : {x:300, y:0, width:100, height:300},
+				conversation : undefined
+			}
+		]
+	}
+};
+
 function Level(name) {
+	console.log("Building level. ("+name+") level data:");
 	var level = this;
 	var levelData = Levels[name];
-	console.log("Building level. ("+name+") level data:");
 	console.log(levelData);
 	this.objects = [];
 	for (var i = 0; i < levelData.objects.length; i++) {
@@ -101,9 +168,11 @@ var Hero = {
 		this.moving = "left"
 	},
 	enter : function(){
-		console.log("interract with something ");
-		console.log(this.intersects[0].conversation);
-		game.gui = new GUI(this.intersects[0].conversation);
+		if(this.intersects[0]){
+			console.log("interract with something ");
+			console.log(this.intersects[0].conversation);
+			game.gui = new GUI(this.intersects[0].conversation);
+		}
 	}
 }
 
@@ -127,53 +196,37 @@ function LevelObject(data) {
 	}
 }
 
-function Sprite(spriteID) {
+var millisPrFrame = 300;
+
+function Sprite(spriteName) {
 	var sprite = this;
-	sprite.frames = 0; //todo: sprites
+	var spriteData = Sprites[spriteName];
+	var img = new Image();
+	img.src = spriteData.src;
+	img.onload = function () {
+		sprite.img = img;
+	}
+	sprite.frames = spriteData.frames; //todo: sprites
+	sprite.bounds = spriteData.bounds;
 	sprite.currentFrame = 0;
+	sprite.timeSinceLastFrame = 0;
 	this.update = function(delta) {
+		sprite.timeSinceLastFrame += delta;
+		if(sprite.timeSinceLastFrame > millisPrFrame){
+			sprite.currentFrame += 1;
+			if(sprite.currentFrame > sprite.frames-1)
+				sprite.currentFrame = 0;
+			sprite.timeSinceLastFrame -= millisPrFrame;
+		}
 
 	}
 	this.draw = function(bounds, context) {
-		context.fillStyle = "red";
-		context.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+		if(!sprite.img){
+			context.fillStyle = "red";
+			context.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+		}else{
+			var xpos = sprite.currentFrame * sprite.bounds.width;
+			context.drawImage(sprite.img, xpos, 0, sprite.bounds.width, sprite.bounds.height, bounds.x, bounds.y, bounds.width, bounds.height);
+		}	
 	}
 }
-
-var Levels = {
-	"surface" : {
-		spawn : {x:700, y:500},
-		exit : {x:100, y:500, leadsTo:"well"},
-		src : "meadow.png",
-		objects : [
-			{
-				sprite : "tree",
-				bounds : {x:50, y:500, width:50, height:100},
-				conversation : "test"
-			},
-			{
-				sprite : "bush",
-				bounds : {x:750, y:500, width:50, height:100},
-				conversation : undefined
-			},
-			{
-				sprite : "hole",
-				bounds : {x:300, y:560, width:150, height:20},
-				conversation : "Intro",
-				mandatory : "hole"
-			}
-		]
-	},
-	"hole" : {
-		spawn : {x:400, y:500},
-		exit : {x:100, y:500, leadsTo:"well"},
-		src : "bottom.png",
-		objects : [
-			{
-				sprite : "light",
-				bounds : {x:300, y:0, width:100, height:300},
-				conversation : undefined
-			}
-		]
-	}
-};
