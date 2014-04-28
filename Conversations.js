@@ -127,6 +127,23 @@ var Conversations = {
 			}
 		}
 	},
+	"falling" : {
+		"start" : "fall",
+		"screens" : {
+			"fall" : { 
+				"text" : "You are falling town the well.",
+				"options" : [
+					"leave" 
+				]
+			}
+		},
+		"options" : {
+			"leave" : {
+				"leadsTo" : undefined, 
+				"text" : "GLAG!"
+			}
+		}
+	},
 	"valves_wrong" : {
 		"start" : "fail",
 		"screens" : {

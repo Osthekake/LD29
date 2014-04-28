@@ -154,6 +154,7 @@ var Levels = {
 			"surface" : {x:340, y:20}
 		},
 		src : "bg/well.png",
+		conversationOnLoad : "falling",
 		objects : [
 			{
 				sprite : "hole",
