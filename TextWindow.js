@@ -64,6 +64,8 @@ function OptionsWindow(options, gui) {
 		var option = ow.options[ow.selected];
 		if(option.grants)
 			Inventory.add(option.grants);
+		if(option.destroy)
+			DestroyTriggers.destroy(option.destroy);
 		var dest = option["leadsTo"];
 		ow.selected = 0;
 		if(ow.options[ow.selected].levelTransition){

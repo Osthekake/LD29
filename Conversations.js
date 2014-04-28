@@ -499,7 +499,7 @@ var Conversations = {
 			},
 			"tfbluff02" : {
 				"leadsTo" : "townfans05",
-				"requires" : ["tfbluffinfo"],
+				requires : ["tfbluffinfo"],
 				"text" : "You read the paper, you got this one"
 			}
 		}
@@ -511,7 +511,8 @@ var Conversations = {
 				"text" : "A very officious looking official is standing guard here.",
 				"options" : [
 					"offtalk01",
-					"offleave01"]
+					"offleave01",
+					"bribe"]
 			},
 			"official02" : {
 				"text" : "You ask if you can get past. She says no.",
@@ -547,6 +548,12 @@ var Conversations = {
 			"offwhy01" : {
 				"leadsTo" : "offical04",
 				"text" : "Ask why"
+			},
+			"bribe" : {
+				requires : ["Faceautograph", "autographsp01"], //todo: something from reporters?
+				"leadsTo" : "takeBribe",
+				"text" : "Offer Knight autographs for passage.",
+				destroy : "bribe"
 			}
 		}
 	},
@@ -663,7 +670,7 @@ var Conversations = {
 			"brmap01" : {
 				"leadsTo" : "bridgie03",
 				"text" : "Ask about the location in the notebook",
-				"requires": ["notebookcopy"]
+				requires: ["notebookcopy"]
 			},
 			"brname01" : {
 				"leadsTo" : "bridgie04",

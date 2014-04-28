@@ -317,6 +317,7 @@ var Levels = {
 				sprite : "guard",
 				bounds : {x:200, y:370, width:50, height:120},
 				conversation : "official",
+				destroyTrigger : "bribe",
 				blocking : 220,
 				hint : "Official."
 			}

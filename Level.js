@@ -215,6 +215,9 @@ function LevelObject(data) {
 	object.shouldRemove = data.remove;
 	object.blockAt = data.blocking;
 	object.onInterract = data.onInterract;
+	if(data.destroyTrigger){
+		DestroyTriggers.register(object, data.destroyTrigger);
+	}
 
 	object.line = null;
 	object.exists = true;

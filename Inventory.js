@@ -34,3 +34,13 @@ var Inventory = {
 		this.printToElement.innerHTML = html;
 	}
 }
+
+var DestroyTriggers = {
+	objects : {},
+	register : function(object, trigger) {
+		this.objects[trigger] = object;
+	},
+	destroy : function(trigger){
+		this.objects[trigger].remove();
+	}
+}
