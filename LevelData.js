@@ -295,6 +295,7 @@ var Levels = {
 			},{
 				sprite : "squire",
 				bounds : {x:130, y:250, width:70, height:70},
+				conversation : "squire",
 				hint : "Sir Face's squire"
 			},{
 				sprite : "passable",

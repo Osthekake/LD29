@@ -831,7 +831,7 @@ var Conversations = {
 					"squiretalk02",
 					"squireleave01"]
 			},
-			"squire03"  {
+			"squire03" : {
 				"text" : "He looks at you with tears in his eyes which he tries to pretend\naren't there because he comes from a culture where tears are not\nacceptable behaviour for men in public. Poor boy. It must be awful\nto be so repressed.\n\"Thanks,\"he says. \"I really miss him. I just keep thinking about the\nlast thing he told me...\"",
 				"options" : [
 					"squiretalk03",
