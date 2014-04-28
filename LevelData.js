@@ -341,7 +341,8 @@ var Levels = {
 				sprite : "down_arrow",
 				bounds : {x:600, y:130, width:50, height:50},
 				transition : "factory",
-				hint : "Follow ledge"
+				hint : "Follow ledge",
+				blocking : 590
 			},
 			{
 				sprite : "notepad",
@@ -359,7 +360,8 @@ var Levels = {
 				sprite : "right_arrow",
 				bounds : {x:750, y:470, width:50, height:50},
 				transition : "cavern",
-				hint : "Go right"
+				hint : "Go right",
+				blocking : 620
 			},
 			{
 				sprite : "notepad",
