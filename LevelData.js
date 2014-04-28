@@ -462,8 +462,8 @@ var Levels = {
 			{
 				sprite : "valve",
 				bounds : {x:330, y:290, width:50, height:50},
-				onInterract : function(){Valves.turn("b");},
-				hint : "Turn valve (b)"
+				onInterract : function(){Valves.turn("o");},
+				hint : "Turn valve (o)"
 			},
 			{
 				sprite : "valve",

@@ -1,6 +1,6 @@
 var Valves = {
 	order : "",
-	correctOrder : "cacab",
+	correctOrder : "cocoa",
 	turn : function(which) {
 		this.order += which;
 	},
