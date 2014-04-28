@@ -94,7 +94,7 @@ var Sprites = {
 	"glue" : {
 		src : "objects/glue.png",
 		bounds: {width:130, height:700},
-		frames: 1
+		frames: 3
 	},
 	"underminer" : {
 		src : "objects/underminer.png",
@@ -110,6 +110,11 @@ var Sprites = {
 		src : "objects/bridgie.png",
 		bounds: {width:120, height:120},
 		frames: 1
+	},
+	"cbat" : {
+		src : "objects/cbat.png",
+		bounds: {width:50, height:50},
+		frames: 3
 	}
 
 };
@@ -201,6 +206,10 @@ var Levels = {
 				bounds : {x:0, y:90, width:50, height:50},
 				transition : "ship",
 				hint : "Go left"
+			},
+			{
+				sprite : "cbat",
+				bounds : {x:130, y:400, width:50, height:50}
 			}
 		]
 	},
@@ -320,6 +329,10 @@ var Levels = {
 				destroyTrigger : "bribe",
 				blocking : 220,
 				hint : "Official."
+			},
+			{
+				sprite : "cbat",
+				bounds : {x:210, y:100, width:50, height:50}
 			}
 		]
 	},
@@ -386,6 +399,10 @@ var Levels = {
 			{
 				sprite : "notepad",
 				bounds : {x:660, y:510, width:50, height:50}
+			},
+			{
+				sprite : "cbat",
+				bounds : {x:230, y:350, width:50, height:50}
 			}
 		]
 	},
@@ -446,6 +463,12 @@ var Levels = {
 				bounds : {x:630, y:370, width:50, height:50},
 				onInterract : function(){Valves.test();},
 				hint : "Pull lever"
+			}, 
+			{
+				sprite : "cbat",
+				bounds : {x:50, y:330, width:50, height:50},
+				hint : "A carrier bat",
+				conversation : "carrierbat"
 			}
 		]
 	},
@@ -478,7 +501,10 @@ var Levels = {
 		},
 		src : "bg/meadow.png",
 		objects : [
-			
+			{
+				sprite : "glue",
+				bounds : {x:100, y:400, width:130, height:700}
+			}
 		]
 	}
 };
