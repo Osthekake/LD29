@@ -6,416 +6,6 @@ function intersectRect(r1, r2) {
 		r2.y + r2.height < r1.y);
 }
 
-
-var Sprites = {
-	"tree" : {
-		src : "objects/tree.png",
-		bounds: {width:50, height:100},
-		frames: 1
-	},
-	"bush" : {
-		src : "objects/bush.png",
-		bounds: {width:50, height:70},
-		frames: 1
-	},
-	"hole" : {
-		src : "objects/hole.png",
-		bounds: {width:150, height:20},
-		frames: 1
-	},
-	"light" : {
-		src : "objects/light.png",
-		bounds: {width:100, height:300},
-		frames: 3
-	},
-	"hero" : {
-		src : "objects/hero.png",
-		bounds: {width:70, height:90},
-		frames: 1
-	},
-	"left_arrow" : {
-		src : "objects/left.png",
-		bounds: {width:50, height:50},
-		frames: 4
-	},
-	"right_arrow" : {
-		src : "objects/right.png",
-		bounds: {width:50, height:50},
-		frames: 4
-	},
-	"down_arrow" : {
-		src : "objects/down.png",
-		bounds: {width:50, height:50},
-		frames: 4
-	},
-	"water" : {
-		src : "objects/waterblob.png",
-		bounds: {width:150, height:150},
-		frames: 1
-	},
-	"paper" : {
-		src : "objects/paper.png",
-		bounds: {width:50, height:50},
-		frames: 1
-	},
-	"lift" : {
-		src : "objects/elevator.png",
-		bounds: {width:50, height:100},
-		frames: 1
-	},
-	"valve" : {
-		src : "objects/valve.png",
-		bounds: {width:50, height:50},
-		frames: 1
-	},
-	"notepad" : {
-		src : "objects/notepad.png",
-		bounds: {width:50, height:50},
-		frames: 1
-	},
-	"lever" : {
-		src : "objects/lever.png",
-		bounds: {width:50, height:50},
-		frames: 1
-	},
-	"fans" : {
-		src : "objects/fans.png",
-		bounds: {width:300, height:120},
-		frames: 1
-	},
-	"guard" : {
-		src : "objects/guard.png",
-		bounds: {width:50, height:120},
-		frames: 1
-	},
-	"face" : {
-		src : "objects/face.png",
-		bounds: {width:70, height:120},
-		frames: 1
-	},
-	"passable" : {
-		src : "objects/passable.png",
-		bounds: {width:70, height:120},
-		frames: 1
-	}
-};
-
-var Levels = {
-	"surface" : {
-		spawn : {
-			"start" : {x:700, y:500}
-		},
-		src : "bg/meadow.png",
-		objects : [
-			{
-				sprite : "tree",
-				bounds : {x:20, y:300, width:130, height:280},
-				conversation : "test"
-			},
-			{
-				sprite : "bush",
-				bounds : {x:750, y:500, width:50, height:70},
-				conversation : undefined
-			},
-			{
-				sprite : "hole",
-				bounds : {x:300, y:560, width:150, height:20},
-				conversation : "Intro",
-				mandatory : true
-			}
-		]
-	},
-	"well" : {
-		spawn : {
-			"surface" : {x:340, y:20}
-		},
-		src : "bg/well.png",
-		objects : [
-			{
-				sprite : "hole",
-				bounds : {x:300, y:560, width:150, height:20},
-				transition : "hole",
-				hint : "AAAAAAA",
-				mandatory : true
-			},
-			{
-				sprite : "water",
-				bounds : {x:300, y:-30, width:130, height:200},
-				mandatory : true,
-				elevator : {
-					distance : 500,
-					position : "up"
-				}
-			}
-		]
-	},
-	"hole" : {
-		spawn : {
-			"surface" : {x:400, y:500},
-			"bridge01" : {x:0, y:520}
-		},
-		src : "bg/bottom.png",
-		objects : [
-			{
-				sprite : "light",
-				bounds : {x:300, y:0, width:100, height:300},
-				conversation : undefined
-			},
-			{
-				sprite : "left_arrow",
-				bounds : {x:0, y:520, width:50, height:50},
-				transition : "bridge01",
-				hint : "Go left"
-			}
-		]
-	},
-	"bridge01" : {
-		spawn : {
-			"hole" : {x:700, y:50},
-			"ship" : {x:50, y:50}
-		},
-		src : "bg/corridor01.png",
-		objects : [
-			{
-				sprite : "right_arrow",
-				bounds : {x:750, y:90, width:50, height:50},
-				transition : "hole",
-				hint : "Go right"
-			},
-			{
-				sprite : "left_arrow",
-				bounds : {x:0, y:90, width:50, height:50},
-				transition : "ship",
-				hint : "Go left"
-			}
-		]
-	},
-	"ship" : {
-		spawn : {
-			"bridge" : {x:700, y:50},
-			"deck" : {x:300, y:50},
-			"ruins" : {x:50, y:50}
-		},
-		src : "bg/ship.png",
-		objects : [
-			{
-				sprite : "right_arrow",
-				bounds : {x:750, y:90, width:50, height:50},
-				transition : "bridge01",
-				hint : "Go right"
-			},
-			{
-				sprite : "left_arrow",
-				bounds : {x:0, y:90, width:50, height:50},
-				transition : "ruins",
-				hint : "Go left"
-			},
-			{
-				sprite : "down_arrow",
-				bounds : {x:300, y:90, width:50, height:50},
-				transition : "deck",
-				hint : "Board ship"
-			},
-			{
-				sprite : "guard",
-				bounds : {x:200, y:20, width:50, height:120},
-				conversation : "official",
-				hint : "Official."
-			}
-		]
-	},
-	"deck" : {
-		spawn : {
-			"ship" : {x:700, y:280}
-		},
-		src : "bg/deck.png",
-		objects : [
-			{
-				sprite : "right_arrow",
-				bounds : {x:750, y:290, width:50, height:50},
-				transition : "ship",
-				hint : "Go right"
-			},{
-				sprite : "paper",
-				bounds : {x:550, y:310, width:50, height:50},
-				conversation : "newspaper",
-				hint : "read newspaper"
-			},{
-				sprite : "fans",
-				bounds : {x:40, y:250, width:300, height:120},
-				conversation : "townfans",
-				hint : "Speak to crowd"
-			}
-		]
-	},
-	"ruins" : {
-		spawn : {
-			"ship" : {x:700, y:240},
-			"bridge02" : {x:10, y:240}
-		},
-		src : "bg/battlefield.png",
-		objects : [
-			{
-				sprite : "right_arrow",
-				bounds : {x:750, y:270, width:50, height:50},
-				transition : "ship",
-				hint : "Go right"
-			},{
-				sprite : "left_arrow",
-				bounds : {x:10, y:270, width:50, height:50},
-				transition : "bridge02",
-				hint : "Go left"
-			},{
-				sprite : "face",
-				bounds : {x:210, y:210, width:70, height:120},
-				hint : "Sir Face"
-			},{
-				sprite : "passable",
-				bounds : {x:410, y:210, width:70, height:120},
-				hint : "Sir Passable"
-			}
-		]
-	},
-	"bridge02" : {
-		spawn : {
-			"ruins" : {x:700, y:390},
-			"cavern" : {x:10, y:390}
-		},
-		src : "bg/corridor02.png",
-		objects : [
-			{
-				sprite : "right_arrow",
-				bounds : {x:750, y:420, width:50, height:50},
-				transition : "ruins",
-				hint : "Go right"
-			},{
-				sprite : "left_arrow",
-				bounds : {x:10, y:420, width:50, height:50},
-				transition : "cavern",
-				hint : "Go left"
-			}
-		]
-	},
-	"cavern" : {
-		spawn : {
-			"bridge" : {x:700, y:70},
-			"overlook_high" : {x:0, y:70},
-			"overlook_low" : {x:0, y:470}
-		},
-		src : "bg/elevator.png",
-		objects : [
-			{
-				sprite : "right_arrow",
-				bounds : {x:750, y:100, width:50, height:50},
-				transition : "bridge02",
-				hint : "Go right"
-			},{
-				sprite : "left_arrow",
-				bounds : {x:10, y:100, width:50, height:50},
-				transition : "overlook_high",
-				hint : "Go left"
-			},{
-				sprite : "left_arrow",
-				bounds : {x:10, y:470, width:50, height:50},
-				transition : "overlook_low",
-				hint : "Go left"
-			},
-			{
-				sprite : "lift",
-				bounds : {x:330, y:30, width:120, height:150},
-				elevator : {
-					distance : 400,
-					position : "up"
-				},
-				hint : "Use elevator"
-			}
-		]
-	},
-	"overlook_high" : {
-		spawn : {
-			"cavern" : {x:700, y:100},
-			"factory" : {x:600, y:100}
-		},
-		src : "bg/overlook.png",
-		objects : [
-			{
-				sprite : "right_arrow",
-				bounds : {x:750, y:130, width:50, height:50},
-				transition : "cavern",
-				hint : "Go right"
-			},{
-				sprite : "down_arrow",
-				bounds : {x:600, y:130, width:50, height:50},
-				transition : "factory",
-				hint : "Follow ledge"
-			},
-			{
-				sprite : "notepad",
-				bounds : {x:660, y:510, width:50, height:50}
-			}
-		]
-	},
-	"overlook_low" : {
-		spawn : {
-			"cavern" : {x:700, y:450}
-		},
-		src : "bg/overlook.png",
-		objects : [
-			{
-				sprite : "right_arrow",
-				bounds : {x:750, y:470, width:50, height:50},
-				transition : "cavern",
-				hint : "Go right"
-			},
-			{
-				sprite : "notepad",
-				bounds : {x:660, y:510, width:50, height:50},
-				conversation : "notebook",
-				remove : true,
-				hint : "Small notepad"
-			}
-		]
-	},
-	"factory" : {
-		spawn : {
-			"overlook_high" : {x:700, y:320}
-		},
-		src : "bg/valves.png",
-		objects : [
-			{
-				sprite : "right_arrow",
-				bounds : {x:750, y:350, width:50, height:50},
-				transition : "overlook_high",
-				hint : "Go right"
-			},
-			{
-				sprite : "valve",
-				bounds : {x:230, y:290, width:50, height:50},
-				valve : "a",
-				hint : "Turn valve (a)"
-			},
-			{
-				sprite : "valve",
-				bounds : {x:330, y:290, width:50, height:50},
-				valve : "b",
-				hint : "Turn valve (b)"
-			},
-			{
-				sprite : "valve",
-				bounds : {x:430, y:290, width:50, height:50},
-				valve : "c",
-				hint : "Turn valve (c)"
-			},
-			{
-				sprite : "lever",
-				bounds : {x:630, y:370, width:50, height:50},
-				conversation : "lever",
-				hint : "Pull lever"
-			}
-		]
-	}
-};
-
 function Level(name, from) {
 	console.log("Building level. ("+name+") level data:");
 	var level = this;
@@ -458,6 +48,14 @@ function Level(name, from) {
 		};
 		Hero.draw(context);
 	}
+	this.blocksAt = function() {
+		var at = []
+		for (var i = 0; i < level.objects.length; i++) {
+			if(level.objects[i].exists && level.objects[i].blockAt)
+				at.push(level.objects[i].blockAt);
+		};
+		return at;
+	}
 }
 
 var Hero = {
@@ -480,6 +78,7 @@ var Hero = {
 		this.sprite.update(delta);
 		this.moving = null;
 		Keyboard.trigger(this);
+		var oldX = this.location.x;
 		if(this.moving != null){
 			if("left" == this.moving){
 				this.location.x -= delta * 0.7;
@@ -490,6 +89,17 @@ var Hero = {
 				if(this.location.x > 730)
 					this.location.x = 730;
 			}
+		}
+		if(this.level){
+			var blocks = this.level.blocksAt();
+			for (var i = 0; i < blocks.length; i++) {
+				var oldD = oldX - blocks[i];
+				var newD = this.location.x - blocks[i];
+//				console.log("old " + oldD + " new " + newD + " product " + newD*oldD);
+				if(newD * oldD < 0){
+					this.location.x = oldX;
+				}
+			};
 		}
 		this.intersects = [];
 		if(this.level && this.controlling){
@@ -562,6 +172,9 @@ var Hero = {
 				}
 				
 			}
+			if(other.shouldRemove){
+				other.remove();
+			}
 		}
 	}
 }
@@ -597,10 +210,15 @@ function LevelObject(data) {
 	object.mandatory = data.mandatory;
 	object.hint = data.hint;
 	object.elevatorData = data.elevator;
+	object.shouldRemove = data.remove;
+	object.blockAt = data.blocking;
 
 	object.line = null;
+	object.exists = true;
 
 	this.update = function(delta) {
+		if(!object.exists)
+			return;
 		// change animation frame
 		object.sprite.update(delta);
 		//move if on a line.
@@ -614,16 +232,26 @@ function LevelObject(data) {
 		}
 	}
 	this.draw = function(context){
+		if(!object.exists)
+			return;
 		//draw sprite with correct animation frame
-		object.sprite.draw(object.bounds, context);
+		if(object.sprite)
+			object.sprite.draw(object.bounds, context);
 	}
 	this.intersects = function(rect){
+		if(!object.exists)
+			return false;
 		return intersectRect(object.bounds, rect);
 	}
 	this.elevator = function(distance) {
+		if(!object.exists)
+			return;
 		console.log("starting elevator for object");
 		object.line = new Line(object.bounds.y, object.bounds.y + distance);
 		console.log(object.line);
+	}
+	this.remove = function () {
+		object.exists = false;
 	}
 }
 
