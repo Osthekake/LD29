@@ -124,8 +124,14 @@ var Conversations = {
 		}
 	},
 	"end" : {
-		"start" : "end",
+		"start" : "epilogue",
 		"screens" : {
+			"epilogue" : { 
+				"text" : "Epilogue:\n\nThe knights got married, and are very happy.\nThe squire found his dad behind a cocoa factory.\nThe bridgie also joined them in drinking cocoa.",
+				"options" : [
+					"nice" 
+				]
+			},
 			"end" : { 
 				"text" : "The end\n\nYou have been playing:\nOperation: Adhesive Surface\n\nBy:\nProgramming & Art: Osthekake\nStory: Kveldsdraum",
 				"options" : [
@@ -153,6 +159,10 @@ var Conversations = {
 			
 		},
 		"options" : {
+			"nice" : {
+				"leadsTo" : "end",
+				"text" : "That's nice."
+			},
 			"leave" : {
 				"leadsTo" : "end2", 
 				"text" : "I see"
