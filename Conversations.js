@@ -456,7 +456,7 @@ var Conversations = {
 					"notecont02"]
 			},
 			"notebook07" : {
-				"text" : "You pocket the notebook, trying hard not to touch the blood.",
+				"text" : "You pocket the notebook, trying hard not to touch the blood - hey,\nthis is cocoa, not blood. Phew.",
 				"options" : [
 					"noteend01"]
 			}
@@ -857,7 +857,7 @@ var Conversations = {
 		"start" : "damage01",
 		"screens" : {
 			"damage01" : {
-				"text" : "You see a lot of broken bits of machiery here. They look like\nthey were carved up with swords or broken by something heavy\nfalling on them.",
+				"text" : "You see a lot of broken bits of machinery here. They look like\nthey were carved up with swords or broken by something heavy\nfalling on them.",
 				"options" : [
 					"damlook01",
 					"damleave01"]
@@ -869,7 +869,7 @@ var Conversations = {
 					"damleave01"]
 			},
 			"damage03" : {
-				"text" : "A placard with \"Sir Passable is the Underlord!\" is discarded\non the ground. It has a sword slice through the middle. Looks\nlike it was used as a makeshift shield.",
+				"text" : "A placard with \"Sir Passable is the Underlord!\" is discarded\non the ground. It has a sword slice through the middle. Looks\nlike it was used as a makeshift shield.\nThere's a sticky note on it: \"Memo: ask fans about injuries while\nwatching matches.\" Looks like that reporter made it here too.",
 				"options" : [
 					"damleave01"]
 			}
@@ -906,7 +906,7 @@ var Conversations = {
 					"squireleave01"]
 			},
 			"squire03" : {
-				"text" : "He looks at you with tears in his eyes which he tries to pretend\naren't there because he comes from a culture where tears are not\nacceptable behaviour for men in public. Poor boy. It must be awful\nto be so repressed.\n\"Thanks,\"he says. \"I really miss him. I just keep thinking about the\nlast thing he told me...\"",
+				"text" : "He looks at you with tears in his eyes which he tries to pretend\naren't there because he comes from a culture where tears are not\nacceptable behaviour for men in public. Poor boy. It must be awful\nto be so repressed.\n\"Thanks,\"he says. \"I really miss him. And those stupid notes he\nleft everywhere.I just keep thinking about the last thing he told me...\"",
 				"options" : [
 					"squiretalk03",
 					"squireleave02"]
