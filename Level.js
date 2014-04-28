@@ -223,7 +223,10 @@ function LevelObject(data) {
 	}
 
 	object.line = null;
-	object.exists = true;
+	if(data.removed)
+		object.exists = false
+	else
+		object.exists = true;
 
 	this.update = function(delta) {
 		if(!object.exists)
@@ -261,6 +264,7 @@ function LevelObject(data) {
 	}
 	this.remove = function () {
 		object.exists = false;
+		data.removed = true;
 	}
 }
 
