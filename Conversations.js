@@ -226,8 +226,7 @@ var Conversations = {
 				"text" : "Various announcements about bridge closures and travel\nrestrictions before the newly created Annual Hyper-Productive\nVegetable Boiling Experiment and Explosive Over-Production\ncelebratory cornucopia.",
 				"options" : [
 					"more01",
-					"exit01"
-				]
+					"exit01"]
 			}
 		},
 		"options" : {
@@ -292,8 +291,7 @@ var Conversations = {
 			"notebook07" : {
 				"text" : "You pocket the notebook, trying hard not to touch the blood.",
 				"options" : [
-					"noteend01"
-				]
+					"noteend01"]
 			}
 		},
 		"options" : {
@@ -437,7 +435,7 @@ var Conversations = {
 			"offical04" : {
 				"text" : "She says \"We must be vigilant against terrorists. They bombed\na themepark recently. Can't be too careful.\"",
 				"options" : [
-					"offleave01",]
+					"offleave01"]
 			}
 		},
 		"options" : {
@@ -716,6 +714,5 @@ var Conversations = {
 				"text" : "Anything else broken here?"
 			}
 		}
-	},
-	
+	}
 };
