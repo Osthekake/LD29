@@ -216,8 +216,8 @@ var Conversations = {
 					"more01",
 					"exit01"]
 			},
-			"index01" : {
-				"text" : "There's a graph and a brief discussion of shares. Plumber Bros\nKingdom of Mushrooms is holding steady, Sticky Fingers Glue\nSuppliers is at rock top, and Guy d'Ropes Security is\ndropping sharply.",
+			"alert01" : {
+				"text" : "A report on recent terrorist activities. Looks like the last\nplace hit was the Plumber Bros' Kingdom of Mushrooms themepark.",
 				"options" : [
 					"more01",
 					"exit01"]
@@ -237,8 +237,8 @@ var Conversations = {
 				"grants" : "tfbluffinfo"
 			},
 			"page02" : {
-				"leadsTo" : "index01",
-				"text" : "Read the Drow Jones Index"
+				"leadsTo" : "alert01",
+				"text" : "Read the Terror Alert"
 			},
 			"page03" : {
 				"leadsTo" : "travel01",
@@ -430,15 +430,14 @@ var Conversations = {
 					"offleave01"]
 			},
 			"official03" : {
-				"text" : "She ignores your politeness.\nYou stick your tongue out. She ignores that too.",
+				"text" : "She nods and goes back to scanning the surroundings for\nsuspicious people.",
 				"options" : [
 					"offleave01"]
 			},
 			"offical04" : {
-				"text" : "She quotes a very long piece of legislation at you. You're\npretty sure it translates to \"Because I said so\".",
+				"text" : "She says \"We must be vigilant against terrorists. They bombed\na themepark recently. Can't be too careful.\"",
 				"options" : [
-					"offleave01",
-					"offwhy01"]
+					"offleave01",]
 			}
 		},
 		"options" : {
@@ -534,17 +533,25 @@ var Conversations = {
 			"bridgie02" : {
 				"text" : "The bridgie doesn't look up. \"You lost, kid?\"",
 				"options" : [
-					"brmap01"
+					"brmap01",
+					"brlast01",
 					"brleave01"]
 			},
 			"bridgie03" : {
 				"text" : "The bridgie still doesn't look up. \"That was the Pump\nManufactory. Got blown up a couple weeks back. We fought nearby.\"\nThe bridgie squints at you. \"Was a reporter asking about that a week back. Not seem 'em since.\nWatch yersel' kid. Strange business around.\"",
 				"options" : [
-					"brname01"
+					"brname01",
+					"brlast01",
 					"brleave02"]
 			},
 			"bridgie04" : {
 				"text" : "\"What was it... Oh yeah. Bernard Woodstein.\"",
+				"options" : [
+					"brlast01"
+					"brleave02"]
+			},
+			"bridgie 05" : {
+				"text" : "\"This last one was a couple of stalactites over, some farm. One\nbefore that was that Kingdom of Mushrooms place. Before that...\ncan't remember the name. A bar of some kind. Sold really good\nmushroom tea.\" The roadie smiles in happy memory.",
 				"options" : [
 					"brleave02"]
 			}
@@ -571,6 +578,10 @@ var Conversations = {
 				"leadsTo" : "bridgie04",
 				"text" : "Ask about the journalist",
 				"grants" : "journoname"
+			},
+			"brlast01" : {
+				"leadsTo" : "bridgie05",
+				"text" : "Ask where the last fights were"
 			}
 		}
 	},
@@ -583,6 +594,23 @@ var Conversations = {
 					"spauto01",
 					"sptalk01",
 					"spleave01"]
+			},
+			"scenepass02" : {
+				"text" : "He sighs. \"I was about to pull my signature move on her when\nsome official decided we were off-side. Which we were not.\nProbably. No-one really knows that rule.\" He drinks more tea.",
+				"options" : [
+					"sptalk02",
+					"spleave02"]
+			},
+			"scenepass03" : {
+				"text" : "He fishes out a pen and a scrap of paper and signs it for you.",
+				"options" : [
+					"sptalk01",
+					"spleave02"]
+			},
+			"scenepass04" : {
+				"text" : "\"Some bridge. Those are tricky fights. Risky, too, even with thh\nsafety lines. Looks impressive though, which is what the bosses\nwant I suppose.\"",
+				"options" : [
+					"spleave02"]
 			}
 		},
 		"options" : {
@@ -590,8 +618,66 @@ var Conversations = {
 				"leadsTo" : "scenepass02",
 				"text" : "Ask him how the fight went"
 			},
+			"sptalk02" : {
+				"leadsTo" : "scenepass04",
+				"text" : "Ask where the next fight is"
+			},
 			"spauto01" : {
-				
+				"leadsTo" : "scenepass03",
+				"text" : "Ask for an autograph",
+				"grants" : "autographsp01"
+			},
+			"spleave01" : {
+				"leadsTo" : undefined,
+				"text" : "Leave Sir Passable to his tea"
+			},
+			"spleave02" : {
+				"leadsTo" : undefined,
+				"text" : "Thank him and leave"
+			}
+		}
+	},
+	"carrierbat" : { //scene 4. If the bat could fly in that would be awesome but it just appearing when the sprite gets to a specific point would be good too. Otherise just draw a bat.
+		"start" : "carrierbat01",
+		"screens" : {
+			"carrierbat01" : {
+				"text" : "A bat flutters up to you. It looks like it has something in its\nfeet. A carrier-bat? Makes sense... sort of...",
+				"options" : [
+					"runbat01",
+					"batmessage01"]
+			},
+			"carrierbat02" : {
+				"text" : "You try to run but bats are pretty nimble in the air. It drops\nthe message in your hand and poops on your hair in disgust at\nyour fear of it. Or so you presume. It seems mean that way.",
+				"options" : [
+					"batmessage02"]
+			},
+			"carrierbat03" : {
+				"text" : "The bat flutters around your head and flies away. What a lovely\nbat.",
+				"options" : [
+					"batmessage02"]
+			},
+			"carrierbat04" : {
+				"text" : "The message says, \"There are no terrorists. You are the only\nsurfacer here.\" The handwriting is familiar; it's from the\nwriter of the notebook.",
+				"options" : [
+					"batleave01"]
+			}
+		},
+		"options" : {
+			"runbat01" : {
+				"leadsTo" : "carrierbat02",
+				"text" : "Oh god a bat! Run!"
+			},
+			"batmessage01" : {
+				"leadsTo" : "carrierbat03",
+				"text" : "Oh, how cute, a carrier bat. Take the message"
+			},
+			"batmessage02" : {
+				"leadsTo" : "carrierbat04",
+				"text" : "Read the message"
+			},
+			"batleave01" : {
+				"leadsTo" : undefined,
+				"text" : "Put the message away"
 			}
 		}
 	}
