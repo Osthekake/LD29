@@ -105,6 +105,11 @@ var Sprites = {
 		src : "objects/squire.png",
 		bounds: {width:70, height:70},
 		frames: 1
+	},
+	"bridgie" : {
+		src : "objects/bridgie.png",
+		bounds: {width:120, height:120},
+		frames: 1
 	}
 
 };
@@ -271,6 +276,7 @@ var Levels = {
 			},{
 				sprite : "face",
 				bounds : {x:210, y:210, width:70, height:120},
+				conversation : "sirface1",
 				hint : "Sir Face"
 			},{
 				sprite : "squire",
@@ -279,7 +285,13 @@ var Levels = {
 			},{
 				sprite : "passable",
 				bounds : {x:410, y:210, width:70, height:120},
-				hint : "Sir Passable"
+				hint : "Sir Passable",
+				conversation : "sirpass1"
+			},{
+				sprite : "bridgie",
+				bounds : {x:510, y:230, width:120, height:120},
+				conversation : "bridgie",
+				hint : "Bridgie"
 			}
 		]
 	},
