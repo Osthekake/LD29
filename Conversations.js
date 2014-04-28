@@ -114,16 +114,43 @@ var Conversations = {
 		"start" : "end",
 		"screens" : {
 			"end" : { 
-				"text" : "The end",
+				"text" : "The end\n\nYou have been playing:\nOperation: Adhesive Surface\n\nBy:\nProgramming & Art: Osthekake\nStory: Kveldsdraum",
 				"options" : [
 					"leave" 
 				]
+			},
+			"end2" : { 
+				"text" : "Thank you for playing.",
+				"options" : [
+					"thank" 
+				]
+			},
+			"thank" : { 
+				"text" : "Thank you for those kind words.",
+				"options" : [
+					"thank2" 
+				]
+			}			,
+			"thank2" : { 
+				"text" : "No, thank you.",
+				"options" : [
+					"thank" 
+				]
 			}
+			
 		},
 		"options" : {
 			"leave" : {
-				"leadsTo" : undefined, 
-				"text" : "(leave)"
+				"leadsTo" : "end2", 
+				"text" : "I see"
+			},
+			"thank" : {
+				"leadsTo" : "thank", 
+				"text" : "Thank you. It was fun."
+			},
+			"thank2" : {
+				"leadsTo" : "thank2", 
+				"text" : "No, thank you!"
 			}
 		}
 	},
