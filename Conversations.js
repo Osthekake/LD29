@@ -516,7 +516,7 @@ var Conversations = {
 				"text" : "Ask them how the fight went"
 			},
 			"fightqbf02" : {
-				"leadsTo" "bridgeface05",
+				"leadsTo" : "bridgeface05",
 				"text" : "Ask where the next fight is"
 			}
 		}
@@ -547,7 +547,7 @@ var Conversations = {
 			"bridgie04" : {
 				"text" : "\"What was it... Oh yeah. Bernard Woodstein.\"",
 				"options" : [
-					"brlast01"
+					"brlast01",
 					"brleave02"]
 			},
 			"bridgie 05" : {
