@@ -543,13 +543,13 @@ var Conversations = {
 					"brleave02"]
 			},
 			"bridgie04" : {
-				"text" : "\"What was it... Oh yeah. Bernard Woodstein.\"",
+				"text" : "The bridgie looks around shiftily.\"Bernard Woodstein. But you didn't get that from me, got it?\"",
 				"options" : [
 					"brlast01",
 					"brleave02"]
 			},
 			"bridgie 05" : {
-				"text" : "\"This last one was a couple of stalactites over, some farm. One\nbefore that was that Kingdom of Mushrooms place. Before that...\ncan't remember the name. A bar of some kind. Sold really good\nmushroom tea.\" The roadie smiles in happy memory.",
+				"text" : "The bridgie thinks for a bit. \"This last one was a couple of stalactites over, some farm. One\nbefore that was that Kingdom of Mushrooms place. Before that...\ncan't remember the name. A bar of some kind. Sold really good\nmushroom tea.\" The roadie smiles in happy memory.",
 				"options" : [
 					"brleave02"]
 			}
@@ -606,7 +606,7 @@ var Conversations = {
 					"spleave02"]
 			},
 			"scenepass04" : {
-				"text" : "\"Some bridge. Those are tricky fights. Risky, too, even with thh\nsafety lines. Looks impressive though, which is what the bosses\nwant I suppose.\"",
+				"text" : "\"Some bridge. Those are tricky fights. Risky, too, even with the\nsafety lines. Looks impressive though, which is what the bosses\nwant I suppose.\"",
 				"options" : [
 					"spleave02"]
 			}
