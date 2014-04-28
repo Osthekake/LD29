@@ -81,7 +81,7 @@ var Conversations = {
 				]
 			},
 			"sabotage" : { 
-				"text" : "We are trying to destroy the glue factory,\nbut we haven't been able to.\nOur contact just said 'cacab'\nover and over, but we\ndon't get it...",
+				"text" : "We are trying to destroy the glue factory,\nbut we haven't been able to.\nThere was a reporter who was close to getting the secret, but..",
 				"options" : [
 					"who",
 					"dynamite",
