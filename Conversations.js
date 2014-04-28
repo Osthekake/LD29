@@ -643,13 +643,13 @@ var Conversations = {
 					"brleave02"]
 			},
 			"bridgie04" : {
-				"text" : "The bridgie looks around shiftily.\"Bernard Woodstein. But you didn't get that from me, got it?\"",
+				"text" : "The bridgie looks around shiftily.\"Bernard Woodstein. Squire over\nthere's not been the same since he disappeared. Hard enough being on\nthe road all the time without having a missing dad to worry about\ntoo.\"",
 				"options" : [
 					"brlast01",
 					"brleave02"]
 			},
 			"bridgie 05" : {
-				"text" : "The bridgie thinks for a bit. \"This last one was a couple of stalactites over, some farm. One\nbefore that was that Kingdom of Mushrooms place. Before that...\ncan't remember the name. A bar of some kind. Sold really good\nmushroom tea.\" The roadie smiles in happy memory.",
+				"text" : "The bridgie thinks for a bit. \"This last one was a\ncouple of stalactites over, some farm. One before that was that Kingdom\nof Mushrooms place. Before that... can't remember the name. A bar of\nsome kind. Sold really good mushroom beer.\" The roadie smiles in\nhappy memory.",
 				"options" : [
 					"brleave02"]
 			}
@@ -812,6 +812,59 @@ var Conversations = {
 			"damlook02" : {
 				"leadsTo" : "damage03",
 				"text" : "Anything else broken here?"
+			}
+		}
+	},
+	"squire" : {
+		"start" : "squire01",
+		"screens" : {
+			"squire01" : {
+				"text" : "The squire looks pretty sad. And overworked.",
+				"options" :[
+					"squiretalk01",
+					"squiretalk02",
+					"squireleave01"]
+			},
+			"squire02" : {
+				"text" : "The squire says, \"Sorry, I'm really busy.\"\nHe goes back to polishing the armour.",
+				"options" : [
+					"squiretalk02",
+					"squireleave01"]
+			},
+			"squire03"  {
+				"text" : "He looks at you with tears in his eyes which he tries to pretend\naren't there because he comes from a culture where tears are not\nacceptable behaviour for men in public. Poor boy. It must be awful\nto be so repressed.\n\"Thanks,\"he says. \"I really miss him. I just keep thinking about the\nlast thing he told me...\"",
+				"options" : [
+					"squiretalk03",
+					"squireleave02"]
+			},
+			"squire04" : {
+				"text" : "something cacab???",
+				"options" : [
+					"squireleave02"]
+			}
+		},
+		"options" : {
+			"squiretalk01" : {
+				"leadsTo" : "squire02",
+				"text" : "Make small-talk"
+			},
+			"squiretalk02" : {
+				"leadsTo" : "squire03",
+				"text" : "Tell the squire you're sorry about his father",
+				requires : ["journoname"]
+			},
+			"squiretalk03" : {
+				"leadsTo" : "squire04",
+				"text" : "Ask what his father told him. It's clearly on his mind",
+				grants : "solution"
+			},
+			"squireleave01" : {
+				"leadsTo" : undefined,
+				"text" : "Leave him alone"
+			},
+			"squireleave02" : {
+				"leadsTo" : undefined,
+				"text" : "Leave the boy to his socially mandated repressed emotions."
 			}
 		}
 	}
