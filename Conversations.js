@@ -192,7 +192,7 @@ var Conversations = {
 			}
 		}
 	},
-	"newspaper" : {
+	"newspaper" : { //Scene 1. Grants information used in conversation with sports fans
 		"start" : "newspaper01",
 		"screens" : {
 			"newspaper01" : {
@@ -254,7 +254,7 @@ var Conversations = {
 			}
 		}
 	},
-	"notebook" : {
+	"notebook" : { //scene 1. Grants notebook, used in scene 2 with bridgie
 		"start" : "notebook01",
 		"screens" : {
 			"notebook01" : {
@@ -319,7 +319,8 @@ var Conversations = {
 			},
 			"noteskip02" : {
 				"leadsTo" : "notebook06",
-				"text" : "Skip to the next section"
+				"text" : "Skip to the next section",
+				"grants" : "notebookcopy"
 			},
 			"noteend01" : {
 				"leadsTo" : undefined,
@@ -327,7 +328,7 @@ var Conversations = {
 			}
 		}
 	},
-	"townfans" : {
+	"townfans" : { //scene 1. Has a requirement for sports info granted by newspaper
 		"start" : "townfans01",
 		"screens" : {
 			"townfans01" : {
@@ -412,7 +413,7 @@ var Conversations = {
 			}
 		}
 	},
-	"official" : {
+	"official" : { //scene 1
 		"start" : "official01",
 		"screens" : {
 			"official01" : {
@@ -459,5 +460,139 @@ var Conversations = {
 			}
 		}
 	},
-	
+	"sirface1" : { //scene 2. Both Sir Face and squire. Grants Sir Face's autograph (not required for anything)
+		"start" : "bridgeface01",
+		"screens" : {
+			"bridgeface01" : {
+				"text" : "Sir Face and her squire are standing around waiting to be posed\nfor pictures after their interview. They both look pretty bored.",
+				"options" : [
+					"talkbf01",
+					"leavebf01"]
+			},
+			"bridgeface02" : {
+				"text" : "They smile politely at you, clearly thinking you're a fan.",
+				"options" : [
+					"autographbf01",
+					"fightqbf01",
+					"leavebf01"]
+			},
+			"bridgeface03" : {
+				"text" : "The squire hands you a pre-signed picture. It's quite good.",
+				"options" : [
+					"fightqbf01",
+					"leavebf02"]
+			},
+			"bridgeface04" : {
+				"text" : "Sir Face looks sour. \"It was declared invalid, just as I nearly\nhad him. We have a rematch scheduled for later today.\"\n\"I have no idea how we're going to find time to practice\nwith all these reporters here,\" adds the squire.",
+				"options" : [
+					"fightqbf02",
+					"leavebf02"]
+			},
+			"bridgeface05" : {
+				"text" : "\"Near the glue factory. We'll have a really good view of the\nCornucopia!\"The squire looks excited.",
+				"options" : [
+				"leavebf02"]
+			}
+		},
+		"options" : {
+			"talkbf01" : {
+				"leadsTo" : "bridgeface02",
+				"text" : "Talk to them"
+			},
+			"leavebf01" : {
+				"leadsTo" : undefined,
+				"text" : "Leave them alone"
+			},
+			"leavebf02" : {
+				"leadsTo" : undefined,
+				"text" : "Thank them and leave"
+			},
+			"autographbf01" : {
+				"leadsTo" : "bridgeface03",
+				"text" : "Ask for an autograph",
+				"grants" :"Faceautograph"
+			},
+			"fightqbf01" : {
+				"leadsTo" : "bridgeface04",
+				"text" : "Ask them how the fight went"
+			},
+			"fightqbf02" : {
+				"leadsTo" "bridgeface05",
+				"text" : "Ask where the next fight is"
+			}
+		}
+	},
+	"bridgie" : { //scene 2. grants journoname, used to talk to reporters. Requires notebookcopy, from notebook
+		"start" : "bridgie01",
+		"screens" : {
+			"bridgie01" : {
+				"text" : "A large individual of indeterminate gender is sitting on a pile\nof equipment and looking at a map. Looks like a roadie, but\nmaybe bridgie would be more accurate here.",
+				"options" : [
+					"brtalk01",
+					"brleave01"]
+			},
+			"bridgie02" : {
+				"text" : "The bridgie doesn't look up. \"You lost, kid?\"",
+				"options" : [
+					"brmap01"
+					"brleave01"]
+			},
+			"bridgie03" : {
+				"text" : "The bridgie still doesn't look up. \"That was the Pump\nManufactory. Got blown up a couple weeks back. We fought nearby.\"\nThe bridgie squints at you. \"Was a reporter asking about that a week back. Not seem 'em since.\nWatch yersel' kid. Strange business around.\"",
+				"options" : [
+					"brname01"
+					"brleave02"]
+			},
+			"bridgie04" : {
+				"text" : "\"What was it... Oh yeah. Bernard Woodstein.\"",
+				"options" : [
+					"brleave02"]
+			}
+		},
+		"options" : {
+			"brtalk01" : {
+				"leadsTo" : "bridgie02",
+				"text" : "Talk to the bridgie"
+			},
+			"brleave01" : {
+				"leadsTo" : undefined,
+				"text" : "Leave the bridgie alone"
+			},
+			"brleave02" : {
+				"leadsTo" : undefined,
+				"text" : "Thank the bridgie and leave"
+			},
+			"brmap01" : {
+				"leadsTo" : "bridgie03",
+				"text" : "Ask about the location in the notebook",
+				"requires": ["notebookcopy"]
+			},
+			"brname01" : {
+				"leadsTo" : "bridgie04",
+				"text" : "Ask about the journalist",
+				"grants" : "journoname"
+			}
+		}
+	},
+	"sirpass1" : { //scene 3. grants sir passable autograph, not required for anything
+		"start" : "scenepass01",
+		"screens" : {
+			"scenepass01" : {
+				"text" : "Sir Passable is sitting having a cup of tea while his squire\ndemonstrates various stretches and lunges to the fans. He looks\nup at you and musters a thin smile.",
+				"options" : [
+					"spauto01",
+					"sptalk01",
+					"spleave01"]
+			}
+		},
+		"options" : {
+			"sptalk01" : {
+				"leadsTo" : "scenepass02",
+				"text" : "Ask him how the fight went"
+			},
+			"spauto01" : {
+				
+			}
+		}
+	}
 };
