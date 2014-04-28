@@ -680,5 +680,42 @@ var Conversations = {
 				"text" : "Put the message away"
 			}
 		}
-	}
+	},
+	"damage" : { //scene 3
+		"start" : "damage01",
+		"screens" : {
+			"damage01" : {
+				"text" : "You see a lot of broken bits of machiery here. They look like\nthey were carved up with swords or broken by something heavy\nfalling on them.",
+				"options" : [
+					"damlook01",
+					"damleave01"]
+			},
+			"damage02" : {
+				"text" : "There's a motor with bits of burnt rubber round about it.\nSomething must have got stuck in the belt and burned it. It\nsmells pretty bad.",
+				"options" : [
+					"damlook02",
+					"damleave01"]
+			},
+			"damage03" : {
+				"text" : "A placard with \"Sir Passable is the Underlord!\" is discarded\non the ground. It has a sword slice through the middle. Looks\nlike it was used as a makeshift shield.",
+				"options" : [
+					"damleave01"]
+			}
+		},
+		"options" : {
+			"damleave01" : {
+				"leadsTo" : undefined,
+				"text" : "Stop looking for broken things"
+			},
+			"damlook01" : {
+				"leadsTo": "damage02",
+				"text" : "Look for more broken stuff"
+			},
+			"damlook02" : {
+				"leadsTo" : "damage03",
+				"text" : "Anything else broken here?"
+			}
+		}
+	},
+	
 };
