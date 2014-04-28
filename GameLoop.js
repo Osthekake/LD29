@@ -34,6 +34,7 @@ function GameLoop(canvas) {
 
 	//start rendering and updating.
 	this.start = function() {
+		console.log("Load complete. Starting again.");
 		game.running = true;
 		window.requestAnimationFrame(this.run);
 	}
@@ -41,13 +42,41 @@ function GameLoop(canvas) {
 	this.loadLevel = function(levelname) {
 		game.stop();
 		var old = game.level.name;
+		game.loaded = [];
 		game.level = new Level(levelname, old);
-		game.start();
+		game.toBeLoaded = game.level.getAllSpriteNames();
+		//game.start();
+	}
+	this.loaded = [];
+	this.toBeLoaded = [];
+	this.hasLoaded = function(spritename){
+		game.loaded.push(spritename);
+		if(game.isAllLoaded())
+			game.start();
+	}
+	this.isAllLoaded = function(){
+		console.log("Checking if all loaded. Need: ");
+		console.log(game.toBeLoaded);
+		console.log("Has: ");
+		console.log(game.loaded);
+		for (var i = 0; i < game.toBeLoaded.length; i++) {
+			if(!game.isLoaded(game.toBeLoaded[i]))
+				return false;
+		};
+		return true;
+	}
+	this.isLoaded = function(spritename){
+		for (var i = 0; i < game.loaded.length; i++) {
+			if(spritename == game.loaded[i])
+				return true;
+		};
+		return false;
 	}
 
 	//stop rendering and updating.
 	this.stop = function() {
 		game.running = false;
+		console.log("Need to load. Stopping.");
 	}
 
 	//the update method

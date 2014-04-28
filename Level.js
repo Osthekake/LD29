@@ -32,12 +32,19 @@ function Level(name, from) {
 		img.src = file;
 		img.onload = function () {
 		  level.background = img;
+		  game.hasLoaded("bg");
 		}
 	}
 	if(levelData.src){
 		level.setBGImage(levelData.src);
 	}
-
+	this.getAllSpriteNames = function(){
+		var names = ["bg"];
+		for (var i = 0; i < levelData.objects.length; i++) {
+			names.push(levelData.objects[i].sprite);
+		};
+		return names;
+	}
 	this.update = function(delta) {
 		for (var i = level.objects.length - 1; i >= 0; i--) {
 			level.objects[i].update(delta);
@@ -243,6 +250,7 @@ function LevelObject(data) {
 			}
 		}
 	}
+
 	this.draw = function(context){
 		if(!object.exists)
 			return;
@@ -277,6 +285,7 @@ function Sprite(spriteName) {
 	img.src = spriteData.src;
 	img.onload = function () {
 		sprite.img = img;
+		game.hasLoaded(spriteName);
 	}
 	sprite.frames = spriteData.frames; //todo: sprites
 	sprite.bounds = spriteData.bounds;
