@@ -90,6 +90,11 @@ var Sprites = {
 		src : "objects/passable.png",
 		bounds: {width:70, height:120},
 		frames: 1
+	},
+	"glue" : {
+		src : "objects/glue.png",
+		bounds: {width:130, height:700},
+		frames: 1
 	}
 };
 
@@ -387,27 +392,59 @@ var Levels = {
 			{
 				sprite : "valve",
 				bounds : {x:230, y:290, width:50, height:50},
-				valve : "a",
+				onInterract : function(){Valves.turn("a");},
 				hint : "Turn valve (a)"
 			},
 			{
 				sprite : "valve",
 				bounds : {x:330, y:290, width:50, height:50},
-				valve : "b",
+				onInterract : function(){Valves.turn("b");},
 				hint : "Turn valve (b)"
 			},
 			{
 				sprite : "valve",
 				bounds : {x:430, y:290, width:50, height:50},
-				valve : "c",
+				onInterract : function(){Valves.turn("c");},
 				hint : "Turn valve (c)"
 			},
 			{
 				sprite : "lever",
 				bounds : {x:630, y:370, width:50, height:50},
-				conversation : "lever",
+				onInterract : function(){Valves.test();},
 				hint : "Pull lever"
 			}
+		]
+	},
+	"goingUp" : {
+		spawn : {
+			"factory" : {x:340, y:520}
+		},
+		src : "bg/well.png",
+		objects : [
+			{
+				sprite : "light",
+				bounds : {x:300, y:0, width:100, height:100},
+				transition : "surface02",
+				hint : "Ooh"
+			},
+			{
+				sprite : "glue",
+				bounds : {x:300, y:600, width:130, height:700},
+				mandatory : true,
+				elevator : {
+					distance : 500,
+					position : "down"
+				}
+			}
+		]
+	},
+	"surface02" : {
+		spawn : {
+			"goingUp" : {x:340, y:520}
+		},
+		src : "bg/meadow.png",
+		objects : [
+			
 		]
 	}
 };

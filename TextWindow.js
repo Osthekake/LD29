@@ -104,6 +104,8 @@ function GUI(conversationID) {
 
 	gui.conversationID = conversationID;
 	gui.conversation = Conversations[conversationID];
+	if(!gui.conversation)
+		console.log("Missing conversation: " + conversationID);
 	gui.currentScreenName = gui.conversation["start"];
 	gui.currentScreen = gui.conversation["screens"][gui.currentScreenName];
 	console.log(gui.currentScreen);

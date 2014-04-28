@@ -172,6 +172,8 @@ var Hero = {
 				}
 				
 			}
+			if(other.onInterract)
+				other.onInterract();
 			if(other.shouldRemove){
 				other.remove();
 			}
@@ -212,6 +214,7 @@ function LevelObject(data) {
 	object.elevatorData = data.elevator;
 	object.shouldRemove = data.remove;
 	object.blockAt = data.blocking;
+	object.onInterract = data.onInterract;
 
 	object.line = null;
 	object.exists = true;

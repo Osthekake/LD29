@@ -51,6 +51,41 @@ var Conversations = {
 				"text" : "(leave)"
 			}//, other options go here.
 		}
+	},
+	"valves_wrong" : {
+		"start" : "fail",
+		"screens" : {
+			"fail" : { 
+				"text" : "That didn't seem to do anything. Maybe try again\nin a different order?",
+				"options" : [
+					"leave" 
+				]
+			}
+		},
+		"options" : {
+			"leave" : {
+				"leadsTo" : undefined, 
+				"text" : "(leave)"
+			}
+		}
+	},
+	"valves_correct" : {
+		"start" : "win",
+		"screens" : {
+			"win" : { 
+				"text" : "The glue factory seems to be overloading.\nYou see flashing lights, and hear an increase\nin the bubbly, boiling sound.",
+				"options" : [
+					"leave" 
+				]
+			}
+		},
+		"options" : {
+			"leave" : {
+				"leadsTo" : "goingUp", 
+				"text" : "Uh-oh..",
+				levelTransition : true
+			}
+		}
 	},//, other conversations go here
 	"Intro" : {
 		"start" : "intro01",
