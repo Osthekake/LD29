@@ -56,7 +56,7 @@ var Conversations = {
 		"start" : "curious",
 		"screens" : {
 			"curious" : { 
-				"text" : "A strange hooded figure is standing here,\nholding a stick of dynamite.",
+				"text" : "A strange hooded figure is standing here, holding a stick of dynamite.",
 				"options" : [
 					"sabotage",
 					"who",
@@ -65,7 +65,7 @@ var Conversations = {
 				]
 			},
 			"underminers" : { 
-				"text" : "I am one of the Underminers. We are a\nsecret organisation who oppose the government\nthrough sabotage and subterfuge.",
+				"text" : "I am an Underminer. We are secret organisation who oppose the government\nthrough sabotage and subterfuge.",
 				"options" : [
 					"sabotage",
 					"dynamite",
@@ -73,26 +73,35 @@ var Conversations = {
 				]
 			},
 			"minor" : { 
-				"text" : "The reason I am holding a stick of\ndynamite is because I am a minor.",
+				"text" : "Because I am a minor.",
 				"options" : [
 					"sabotage",
 					"who",
+					"short",
 					"leave" 
 				]
 			},
 			"sabotage" : { 
-				"text" : "We are trying to destroy the glue factory,\nbut we haven't been able to.\nThere was a reporter who was close to getting the secret, but..",
+				"text" : "We are trying to destroy the glue factory, but we haven't been able to.\nThere was a reporter who was close to getting the secret, but\nhe's in hiding.",
 				"options" : [
 					"who",
 					"dynamite",
 					"leave" 
+				]
+			},
+			"glare" : {
+				"text" : "The underminer glares at you. \"Do you judge me by my size? You should not, for force is my ally. Also, mass, acceleration, and exothermic reactions.\"",
+				"options" : [
+					"who",
+					"sabotage",
+					"leave"
 				]
 			}
 		},
 		"options" : {
 			"leave" : {
 				"leadsTo" : undefined, 
-				"text" : "(leave)"
+				"text" : "Leave the underminer"
 			},
 			"who" : {
 				"leadsTo" : "underminers", 
@@ -107,6 +116,10 @@ var Conversations = {
 				"leadsTo" : "sabotage", 
 				requires : ["knowledge:underminers"],
 				"text" : "Sabotage you say? How can I help?"
+			},
+			"short" : {
+				"leadsTo" : "glare",
+				"text" : "Is that why you're so short?"
 			}
 		}
 	},
@@ -816,7 +829,7 @@ var Conversations = {
 					"batmessage02"]
 			},
 			"carrierbat04" : {
-				"text" : "The message says, \"There are no terrorists. You are the only\nsurfacer here.\" The handwriting is familiar; it's from the\nwriter of the notebook.",
+				"text" : "The message says, \"No terrorists stop only underminers stop tell my\nson to smoke me a kipper comma I'll be back for breakfast\" The\nhandwriting is familiar; it's from the writer of the notebook.",
 				"options" : [
 					"batleave01"]
 			}
@@ -899,7 +912,7 @@ var Conversations = {
 					"squireleave02"]
 			},
 			"squire04" : {
-				"text" : "something cacab???",
+				"text" : "\"He said he prefers cocoa with his kippers. I don't understand.\"\nThe squire looks perplexed.",
 				"options" : [
 					"squireleave02"]
 			}
