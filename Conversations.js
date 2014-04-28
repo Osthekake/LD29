@@ -39,7 +39,7 @@ var Conversations = {
 			"greet01" : {	
 				"leadsTo" : "screen01",
 				"text" : "I greet you fellow subterranian.",
-				yields : "politeness"
+				grants : "politeness"
 			},
 			"polite" : {
 				"leadsTo" : "screen01",
@@ -97,7 +97,7 @@ var Conversations = {
 			"who" : {
 				"leadsTo" : "underminers", 
 				"text" : "Who are you? And why are you dressed like that?",
-				yields : "knowledge:underminers"
+				grants : "knowledge:underminers"
 			},
 			"dynamite" : {
 				"leadsTo" : "minor", 
@@ -326,7 +326,7 @@ var Conversations = {
 			"page01" : {
 				"leadsTo" : "listings01",
 				"text" : "Read the Knight Fight Listings",
-				"grants" : "tfbluffinfo"
+				grants : "tfbluffinfo"
 			},
 			"page02" : {
 				"leadsTo" : "alert01",
@@ -411,7 +411,7 @@ var Conversations = {
 			"noteskip02" : {
 				"leadsTo" : "notebook06",
 				"text" : "Skip to the next section",
-				"grants" : "notebookcopy"
+				grants : "notebookcopy"
 			},
 			"noteend01" : {
 				"leadsTo" : undefined,
@@ -600,7 +600,7 @@ var Conversations = {
 			"autographbf01" : {
 				"leadsTo" : "bridgeface03",
 				"text" : "Ask for an autograph",
-				"grants" :"Faceautograph"
+				grants :"Faceautograph"
 			},
 			"fightqbf01" : {
 				"leadsTo" : "bridgeface04",
@@ -668,7 +668,7 @@ var Conversations = {
 			"brname01" : {
 				"leadsTo" : "bridgie04",
 				"text" : "Ask about the journalist",
-				"grants" : "journoname"
+				grants : "journoname"
 			},
 			"brlast01" : {
 				"leadsTo" : "bridgie05",
@@ -716,7 +716,7 @@ var Conversations = {
 			"spauto01" : {
 				"leadsTo" : "scenepass03",
 				"text" : "Ask for an autograph",
-				"grants" : "autographsp01"
+				grants : "autographsp01"
 			},
 			"spleave01" : {
 				"leadsTo" : undefined,

@@ -62,8 +62,8 @@ function OptionsWindow(options, gui) {
 	}
 	this.enter = function(){
 		var option = ow.options[ow.selected];
-		if(option.yields)
-			Inventory.add(option.yields);
+		if(option.grants)
+			Inventory.add(option.grants);
 		var dest = option["leadsTo"];
 		ow.selected = 0;
 		if(ow.options[ow.selected].levelTransition){
