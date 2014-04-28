@@ -52,6 +52,64 @@ var Conversations = {
 			}//, other options go here.
 		}
 	},
+	"underminer" : {
+		"start" : "curious",
+		"screens" : {
+			"curious" : { 
+				"text" : "A strange hooded figure is standing here,\nholding a stick of dynamite.",
+				"options" : [
+					"sabotage",
+					"who",
+					"dynamite",
+					"leave" 
+				]
+			},
+			"underminers" : { 
+				"text" : "I am one of the Underminers. We are a\nsecret organisation who oppose the government\nthrough sabotage and subterfuge.",
+				"options" : [
+					"sabotage",
+					"dynamite",
+					"leave" 
+				]
+			},
+			"minor" : { 
+				"text" : "The reason I am holding a stick of\ndynamite is because I am a minor.",
+				"options" : [
+					"sabotage",
+					"who",
+					"leave" 
+				]
+			},
+			"sabotage" : { 
+				"text" : "We are trying to destroy the glue factory,\nbut we haven't been able to.\nOur contact just said 'cacab'\nover and over, but we\ndon't get it...",
+				"options" : [
+					"who",
+					"dynamite",
+					"leave" 
+				]
+			}
+		},
+		"options" : {
+			"leave" : {
+				"leadsTo" : undefined, 
+				"text" : "(leave)"
+			},
+			"who" : {
+				"leadsTo" : "underminers", 
+				"text" : "Who are you? And why are you dressed like that?",
+				yields : "knowledge:underminers"
+			},
+			"dynamite" : {
+				"leadsTo" : "minor", 
+				"text" : "Excuse me, why are you holding a stick of dynamite?"
+			},
+			"sabotage" : {
+				"leadsTo" : "combination", 
+				requires : ["knowledge:underminers"],
+				"text" : "Sabotage you say? How can I help?"
+			}
+		}
+	},
 	"valves_wrong" : {
 		"start" : "fail",
 		"screens" : {

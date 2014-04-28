@@ -95,7 +95,18 @@ var Sprites = {
 		src : "objects/glue.png",
 		bounds: {width:130, height:700},
 		frames: 1
+	},
+	"underminer" : {
+		src : "objects/underminer.png",
+		bounds: {width:70, height:70},
+		frames: 1
+	},
+	"squire" : {
+		src : "objects/squire.png",
+		bounds: {width:70, height:70},
+		frames: 1
 	}
+
 };
 
 var Levels = {
@@ -213,13 +224,6 @@ var Levels = {
 				bounds : {x:300, y:90, width:50, height:50},
 				transition : "deck",
 				hint : "Board ship"
-			},
-			{
-				sprite : "guard",
-				bounds : {x:200, y:20, width:50, height:120},
-				conversation : "official",
-				blocking : 220,
-				hint : "Official."
 			}
 		]
 	},
@@ -269,6 +273,10 @@ var Levels = {
 				bounds : {x:210, y:210, width:70, height:120},
 				hint : "Sir Face"
 			},{
+				sprite : "squire",
+				bounds : {x:130, y:250, width:70, height:70},
+				hint : "Sir Face's squire"
+			},{
 				sprite : "passable",
 				bounds : {x:410, y:210, width:70, height:120},
 				hint : "Sir Passable"
@@ -292,6 +300,13 @@ var Levels = {
 				bounds : {x:10, y:420, width:50, height:50},
 				transition : "cavern",
 				hint : "Go left"
+			},
+			{
+				sprite : "guard",
+				bounds : {x:200, y:370, width:50, height:120},
+				conversation : "official",
+				blocking : 220,
+				hint : "Official."
 			}
 		]
 	},
@@ -327,6 +342,12 @@ var Levels = {
 					position : "up"
 				},
 				hint : "Use elevator"
+			},
+			{
+				sprite : "underminer",
+				bounds : {x:580, y:470, width:70, height:70},
+				conversation : "underminer",
+				hint : "Hooded figure"
 			}
 		]
 	},
