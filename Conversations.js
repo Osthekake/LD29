@@ -523,7 +523,7 @@ var Conversations = {
 					"tfleave03"]
 			},
 			"townfans05" : {
-				"text" : "Your analysis sparks an argument, but it's a friendly one. You\n don't learn anything particularly interesting about the fights\nbut you do notice that Sir Pryce's advocate says that \"The only\nway is down\", which strikes you as a little odd.\nThe conversation winds down and you wander off, pondering a\nworld in which up is safe and down is scary, until you trip on\na mushroom and decide to watch where you're going instead.",
+				"text" : "Your analysis sparks an argument, but it's a friendly one. The\nconversation turns to recent terrorist attacks and how they've\nbeen focussing on the Knight Fight locations. They all shake their\nheads sadly and leave.",
 				"options" : [
 					"tfleave02"]
 			},
