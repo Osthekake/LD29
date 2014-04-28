@@ -511,6 +511,7 @@ var Levels = {
 		spawn : {
 			"goingUp" : {x:340, y:520}
 		},
+		conversationOnLoad : "end",
 		src : "bg/meadow.png",
 		objects : [
 			{

@@ -110,6 +110,23 @@ var Conversations = {
 			}
 		}
 	},
+	"end" : {
+		"start" : "end",
+		"screens" : {
+			"end" : { 
+				"text" : "The end",
+				"options" : [
+					"leave" 
+				]
+			}
+		},
+		"options" : {
+			"leave" : {
+				"leadsTo" : undefined, 
+				"text" : "(leave)"
+			}
+		}
+	},
 	"valves_wrong" : {
 		"start" : "fail",
 		"screens" : {

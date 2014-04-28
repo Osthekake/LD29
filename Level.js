@@ -16,6 +16,9 @@ function Level(name, from) {
 	for (var i = 0; i < levelData.objects.length; i++) {
 		level.objects.push(new LevelObject(levelData.objects[i]));
 	};
+	if(levelData.conversationOnLoad){
+		game.gui = new GUI(levelData.conversationOnLoad);
+	}
 
 	this.background = undefined;
 	if(levelData.spawn[from])
