@@ -90,7 +90,7 @@ var Conversations = {
 				]
 			},
 			"glare" : {
-				"text" : "The underminer glares at you. \"Do you judge me by my size? You should not, for force is my ally. Also, mass, acceleration, and exothermic reactions.\"",
+				"text" : "The underminer glares at you. \"Do you judge me by my size? You should\nnot, for force is my ally. Also, mass, acceleration, and exothermic\nreactions.\"He gestures with the dynamite. You back away a little.",
 				"options" : [
 					"who",
 					"sabotage",
@@ -722,7 +722,7 @@ var Conversations = {
 					"brlast01",
 					"brleave02"]
 			},
-			"bridgie 05" : {
+			"bridgie05" : {
 				"text" : "The bridgie thinks for a bit. \"This last one was a\ncouple of stalactites over, some farm. One before that was that Kingdom\nof Mushrooms place. Before that... can't remember the name. A bar of\nsome kind. Sold really good mushroom beer.\" The roadie smiles in\nhappy memory.",
 				"options" : [
 					"brleave02"]
