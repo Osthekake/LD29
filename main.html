@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="Keyboard.js"></script>
 	<script type="text/javascript" src="Conversations.js"></script>
 	
-	<title>Ludum Dare 29</title>
+	<title>Operation: Adhesive Surface (LD29)</title>
 	<style>
 		*{
 			background: black;
@@ -45,9 +45,23 @@
 			margin-top:-5em;
 			background: white;
 		}
+		.fb-like{
+			position: absolute;
+			bottom: 0;
+		}
 	</style>
 </head>
 <body>
+	<div id="fb-root"></div>
+	<script>
+		(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/nb_NO/all.js#xfbml=1";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 	<div class="wrapper"> 
 		<canvas id="canvas" height="600" width="800">
 			Your browser is too old to play this game. (Or has too many security settings active.)
@@ -61,5 +75,6 @@
 		game.level = new Level("surface", "start");
 		game.start();
 	</script>
+	<div class="fb-like" data-href="https://dl.dropboxusercontent.com/u/36948572/ludum dare 29/main.html" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 </body>
 </html>
