@@ -115,6 +115,11 @@ var Sprites = {
 		src : "objects/cbat.png",
 		bounds: {width:50, height:50},
 		frames: 3
+	},
+	"scratches" : {
+		src : "objects/scratches.png",
+		bounds: {width:100, height:100},
+		frames: 1
 	}
 
 };
@@ -374,6 +379,12 @@ var Levels = {
 				bounds : {x:580, y:470, width:70, height:70},
 				conversation : "underminer",
 				hint : "Hooded figure"
+			},
+			{
+				sprite : "scratches",
+				bounds : {x:580, y:70, width:100, height:100},
+				conversation : "damage",
+				hint : "Scratches on wall"
 			}
 		]
 	},

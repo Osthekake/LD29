@@ -104,7 +104,7 @@ var Conversations = {
 				"text" : "Excuse me, why are you holding a stick of dynamite?"
 			},
 			"sabotage" : {
-				"leadsTo" : "combination", 
+				"leadsTo" : "sabotage", 
 				requires : ["knowledge:underminers"],
 				"text" : "Sabotage you say? How can I help?"
 			}
